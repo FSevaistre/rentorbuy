@@ -137,12 +137,12 @@ module Results
       @_costs ||= (1..25).map do |duration|
         {
           rent: {
-            final_savings: rent_final_savings(duration).to_i,
+            final_savings: - rent_final_savings(duration).to_i,
             initial_costs: agency_fees.to_i,
             recuring_costs: (duration * 12 * rent + duration * housing_tax).to_i
           },
           purchase: {
-            final_savings: (price * (1 + HOME_PRICE_GROWTH_RATE/100)**(duration-1) - remaining_principal(duration)).to_i,
+            final_savings: - (price * (1 + HOME_PRICE_GROWTH_RATE/100)**(duration-1) - remaining_principal(duration)).to_i,
             initial_costs: (guaranty_fees + notary_fees).to_i,
             recuring_costs: ((payment * 12 + property_charges + land_tax) * duration).to_i
           }
@@ -151,6 +151,11 @@ module Results
     end
 
     def equilibrium
+      costs.each_with_index do |d, i|
+        next if d[:rent].values.sum < d[:purchase].values.sum
+        return i + 1
+      end
+      nil
     end
 
     def rent_final_savings(duration)
