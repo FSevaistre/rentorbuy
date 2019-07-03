@@ -1,0 +1,43 @@
+@import '../../../core.scss';
+
+.doc-head {
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  padding: $g2;
+  @media screen and (min-width: $tablet-min) {
+    display: flex;
+    padding: 0 0 $g2;
+  }
+
+  &--badge {
+    position: absolute;
+    top: $g2;
+    left: $g2;
+    @media screen and (min-width: $tablet-min) {
+      position: initial;
+      flex: 0 0 $g6;
+    }
+  }
+
+  &--doc-name {
+    @media screen and (min-width: $tablet-min) {
+      flex: 1 1;
+    }
+  }
+
+  &--mortgagor-name {
+    margin-bottom: $g1;
+    @media screen and (min-width: $tablet-min) {
+      flex: 1 1;
+      margin-bottom: 0;
+    }
+  }
+
+  &--filter {
+    @media screen and (min-width: $tablet-min) {
+      flex: 0 0 $g1 * 29;
+      white-space: nowrap;
+    }
+  }
+}

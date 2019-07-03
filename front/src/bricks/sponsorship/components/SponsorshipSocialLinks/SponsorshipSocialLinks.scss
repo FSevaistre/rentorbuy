@@ -1,0 +1,13 @@
+@import '../../../core.scss';
+
+.sponsorship-social-links {
+  display: flex;
+
+  &--button {
+    margin-right: $g1;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

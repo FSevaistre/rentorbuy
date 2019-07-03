@@ -1,0 +1,27 @@
+@import '../../../core.scss';
+
+.swipe-action {
+  position: relative;
+  overflow: hidden;
+
+  &--content {
+    position: relative;
+    transition: right linear 300ms;
+    width: 100%;
+  }
+
+  &--delete {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    align-items: center;
+    justify-content: center;
+    transition: left linear 300ms;
+    background: $error;
+    padding: $g2;
+    width: 50%;
+    color: $white;
+  }
+}

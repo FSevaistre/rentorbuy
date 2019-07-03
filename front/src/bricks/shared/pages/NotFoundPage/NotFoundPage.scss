@@ -1,0 +1,11 @@
+@import '../../../core.scss';
+
+.not-found-page {
+  margin: 0 auto;
+  padding: $g2;
+  max-width: $mobile;
+  @media screen and (min-width: $tablet-min) {
+    margin-top: 20vh;
+    padding: $g3;
+  }
+}

@@ -1,0 +1,112 @@
+@import '../../../core.scss';
+
+.graph {
+  &__captions {
+    &--mobile {
+      .graph__caption {
+        transition: opacity 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+        will-change: opacity;
+
+        &--dimmed {
+          opacity: 0.5;
+        }
+
+        &__bullet {
+          @include variants('background-color', normal);
+
+          border-radius: $g1/4;
+          display: block;
+          height: $g1;
+          margin-right: $g2;
+          width: $g1;
+        }
+
+        &__price {
+          color: #999999;
+          margin-left: $g3;
+        }
+
+        &__title {
+          align-items: center;
+          display: flex;
+          margin-right: $g2;
+        }
+      }
+      .graph__caption + .graph__caption {
+        margin-top: $g1;
+      }
+    }
+
+    &--top {
+      align-items: flex-end;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $g1;
+
+      .graph__caption {
+        @include variants('border-color', normal);
+
+        border-style: solid;
+        padding: 0 $g1;
+        transition: opacity 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+        will-change: opacity;
+        white-space: nowrap;
+
+        &:nth-child(1) {
+          border-left-width: $g1/4;
+        }
+
+        &:nth-child(2) {
+          border-right-width: $g1/4;
+          text-align: right;
+        }
+
+        &--dimmed {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &--bottom {
+      align-items: flex-start;
+      margin-bottom: 0;
+      margin-top: $g1;
+    }
+  }
+
+  &__parts {
+    &--mobile {
+      margin-bottom: $g2;
+    }
+
+    &__container {
+      border-radius: $g1/2;
+      display: flex;
+      overflow: hidden;
+    }
+    &__container + &__container {
+      margin-top: $g1;
+    }
+
+    &__part {
+      @include variants('background-color', normal);
+
+      border-right: $g1/4 solid white;
+      box-sizing: border-box;
+      cursor: pointer;
+      flex-grow: 1;
+      height: $g2;
+      min-width: $g2;
+      transition: opacity 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+      will-change: opacity;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &--dimmed {
+        opacity: 0.5;
+      }
+    }
+  }
+}

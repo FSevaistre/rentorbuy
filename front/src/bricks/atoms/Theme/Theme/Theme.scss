@@ -1,0 +1,141 @@
+@import '../../../core.scss';
+
+.pretto-ui-theme {
+  position: relative;
+
+  h2 {
+    @include heading('large');
+  }
+
+  h3 {
+    @include heading('medium');
+    margin: $g1 0;
+  }
+
+  h4 {
+    @include sub-heading('medium');
+  }
+
+  section {
+    margin: $g2 0;
+  }
+}
+
+.copied {
+  @include transition(all 1000ms ease-in-out);
+  @include box-shadow;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-100%);
+  z-index: 999;
+  background-color: rgba($white, 0.6);
+  padding: 0 $g1;
+  width: 100%;
+  text-align: center;
+  color: #000;
+
+  &.visible {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &.hidden {
+    transform: translateY(-100%);
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+@each $colors, $color, $text-color in (primary-1, $primary-1, $primary-1-l), (primary-1-l, $primary-1-l, $primary-1),
+  (primary-1-d, $primary-1-d, $primary-1-l), (neutral-1, $neutral-1, $neutral-1-l),
+  (neutral-1-l, $neutral-1-l, $neutral-1), (neutral-1-d, $neutral-1-d, $neutral-1-l), (accent-1, $accent-1, $accent-1-l),
+  (accent-1-l, $accent-1-l, $accent-1), (accent-1-d, $accent-1-d, $accent-1-l), (accent-2, $accent-2, $accent-2-l),
+  (accent-2-l, $accent-2-l, $accent-2), (accent-2-d, $accent-2-d, $accent-2-l), (accent-3, $accent-3, $accent-3-l),
+  (accent-3-l, $accent-3-l, $accent-3), (accent-3-d, $accent-3-d, $accent-3-l), (accent-4, $accent-4, $accent-4-l),
+  (accent-4-l, $accent-4-l, $accent-4), (accent-4-d, $accent-4-d, $accent-4-l), (accent-5, $accent-5, $accent-5-l),
+  (accent-5-l, $accent-5-l, $accent-5), (accent-5-d, $accent-5-d, $accent-5-l)
+{
+  .#{$colors} {
+    background-color: $color;
+    color: $text-color;
+  }
+}
+@each $alerts, $color, $text-color in (success, $success, $success-l), (success-l, $success-l, $success),
+  (error, $error, $error-l), (error-l, $error-l, $error)
+{
+  .#{$alerts} {
+    background-color: $color;
+    color: $text-color;
+  }
+}
+@each $gradients, $color-1, $color-2 in (primary-1, $primary-1, $primary-2), (primary-2, $primary-1, $primary-1-d),
+  (accent-1, $accent-1, $accent-1-l)
+{
+  .gradient-#{$gradients} {
+    background: linear-gradient(90deg, $color-1, $color-2);
+  }
+}
+
+.styleguide-colors {
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+
+    &:hover h4 {
+      opacity: 0.7;
+    }
+
+    h4 {
+      @include transition(all 300ms ease-in-out);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.1;
+      z-index: 9999;
+      padding: $g1;
+    }
+
+    ul {
+      @include transition(all 300ms ease-in-out);
+      display: flex;
+      padding: 0;
+      list-style: none;
+
+      .color {
+        @include transition(all 300ms ease-in-out);
+        position: relative;
+        flex-grow: 1;
+        margin-bottom: 0;
+        cursor: pointer;
+        padding: 0;
+        width: 100%;
+        height: 100px;
+        overflow: hidden;
+
+        code {
+          @include scale(1);
+          position: absolute;
+          bottom: $g1;
+          left: $g1;
+          transform-origin: left;
+        }
+
+        input {
+          opacity: 0;
+          cursor: pointer;
+        }
+
+        p {
+          text-transform: lowercase;
+        }
+
+        &:hover code {
+          @include scale(1.15);
+        }
+      }
+    }
+  }
+}

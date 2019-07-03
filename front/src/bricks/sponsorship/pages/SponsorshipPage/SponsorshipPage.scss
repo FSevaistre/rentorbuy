@@ -1,0 +1,141 @@
+@import '../../../core.scss';
+
+@include property-transition('sponsorship-page--error--transition', opacity, 0, 1, 500ms);
+@include property-transition('sponsorship-page--error--transition', max-height, 0, 200px, 500ms);
+
+%wrapper {
+  margin: auto;
+  max-width: $desktop;
+}
+
+.sponsorship-page {
+  background: $neutral-1-l;
+  @media screen and (min-width: $tablet-min) {
+    background: $white;
+  }
+
+  &--header {
+    @media screen and (min-width: $tablet-min) {
+      background: $neutral-1-l;
+    }
+
+    &--wrapper {
+      @extend %wrapper;
+    }
+
+    &--title {
+      display: flex;
+      align-items: center;
+      margin-bottom: $g3;
+
+      &--emoji {
+        display: flex;
+        margin-right: $g3;
+      }
+    }
+
+    &--description {
+      margin-bottom: $g3;
+      @media screen and (min-width: $tablet-min) {
+        margin-bottom: $g6;
+      }
+
+      span {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+
+    &--details {
+      @media screen and (min-width: $tablet-min) {
+        display: flex;
+        align-items: baseline;
+      }
+
+      &--progress {
+        margin-bottom: $g2;
+        @media screen and (min-width: $tablet-min) {
+          margin-right: $g10;
+          margin-bottom: 0;
+          width: 300px;
+        }
+      }
+    }
+  }
+
+  &--actions {
+    @extend %wrapper;
+    @media screen and (min-width: $tablet-min) {
+      display: flex;
+    }
+
+    &--invite {
+      margin-bottom: $g2;
+      @media screen and (min-width: $tablet-min) {
+        flex: 0 0 300px;
+        margin-right: $g3;
+        margin-bottom: 0;
+        width: 300px;
+      }
+    }
+
+    &--share {
+      @media screen and (min-width: $tablet-min) {
+        flex: 0 1 440px;
+        min-width: 0;
+      }
+    }
+  }
+
+  &--error {
+    @extend %wrapper;
+    @media screen and (min-width: $tablet-min) {
+      margin: 0 $g3;
+    }
+    @media screen and (min-width: $desktop) {
+      margin: 0 auto;
+    }
+  }
+
+  &--sponsored {
+    margin-bottom: $g4;
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g8;
+    }
+
+    &--cards {
+      @media screen and (min-width: $tablet-min) {
+        margin: 0 $g3;
+      }
+      @media screen and (min-width: $desktop + $g6) {
+        margin: auto;
+        max-width: $desktop;
+      }
+    }
+
+    &--title {
+      padding: $g2;
+      @media screen and (min-width: $tablet-min) {
+        padding: $g2 $g3 $g3;
+      }
+      @media screen and (min-width: $desktop + $g6) {
+        margin: auto;
+        padding-right: 0;
+        padding-left: 0;
+        max-width: $desktop;
+      }
+    }
+  }
+
+  &--advisor {
+    padding-bottom: $g5;
+    @media screen and (min-width: $tablet-min) {
+      margin: 0 $g3;
+      padding-bottom: $g10 + $g3;
+    }
+    @media screen and (min-width: $desktop + $g6) {
+      margin: auto;
+      max-width: $desktop;
+    }
+  }
+}

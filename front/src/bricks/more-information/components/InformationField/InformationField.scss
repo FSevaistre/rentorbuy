@@ -1,0 +1,13 @@
+@import '../../../core.scss';
+
+.information-field {
+  &--label {
+    @extend %label;
+  }
+
+  &--input {
+    @media screen and (min-width: $tablet-min) {
+      max-width: 375px;
+    }
+  }
+}

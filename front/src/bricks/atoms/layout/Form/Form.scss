@@ -1,0 +1,7 @@
+@import '../../../core.scss';
+
+.form {
+  &--divider {
+    @extend %form-divider;
+  }
+}

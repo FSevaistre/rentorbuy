@@ -1,0 +1,81 @@
+@import '../../../core.scss';
+
+.timeline-step {
+  $elem: &;
+
+  &--before,
+  &--current {
+    &#{$elem}--last {
+      #{$elem}--title {
+        &--text {
+          opacity: 1;
+        }
+      }
+
+      #{$elem}--content {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--current {
+    opacity: 1;
+
+    #{$elem}--title {
+      color: $accent-1;
+    }
+  }
+
+  &--after {
+    opacity: 0.4;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &--last {
+    opacity: 1;
+
+    #{$elem}--title {
+      display: flex;
+
+      &--emoji {
+        margin-right: $g2;
+        @media screen and (min-width: $tablet-min) {
+          margin-right: $g3;
+        }
+      }
+
+      &--text {
+        opacity: 0.4;
+      }
+    }
+
+    #{$elem}--content {
+      opacity: 0.4;
+    }
+  }
+
+  &--title {
+    margin-bottom: $g1;
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g2;
+    }
+  }
+
+  &--button {
+    display: inline-block;
+    margin-top: $g2;
+    @media screen and (min-width: $tablet-min) {
+      margin-top: $g5;
+    }
+  }
+
+  &--progress {
+    margin-top: $g2;
+    @media screen and (min-width: $tablet-min) {
+      margin-top: $g3;
+    }
+  }
+}

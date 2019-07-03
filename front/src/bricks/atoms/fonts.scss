@@ -1,0 +1,84 @@
+@import './layout.scss';
+
+$work: 'Work Sans';
+$circular: 'Circular Std';
+
+@mixin heading($size: 'medium') {
+  font-family: $circular, sans-serif;
+  @if ($size == 'small') {
+    line-height: $g4;
+    letter-spacing: 0.2px;
+    font-size: $g3;
+  }
+  @if ($size == 'medium') {
+    line-height: $g4;
+    letter-spacing: 0.2px;
+    font-size: $g3;
+  }
+  @if ($size == 'large') {
+    line-height: $g5;
+    letter-spacing: 0.3px;
+    font-size: $g4;
+  }
+  @media only screen and (min-width: $tablet-min) {
+    @if ($size == 'small') {
+      line-height: $g4;
+      font-size: $g3;
+    }
+    @if ($size == 'medium') {
+      line-height: $g5;
+      letter-spacing: 0.3px;
+      font-size: $g4;
+    }
+    @if ($size == 'large') {
+      line-height: $g6;
+      font-size: $g5;
+    }
+  }
+}
+
+@mixin sub-heading($size: 'medium') {
+  font-family: $circular, sans-serif;
+  $text-size: 18px;
+  @if ($size == 'small') {
+    line-height: $g3;
+    letter-spacing: 0;
+    font-family: $work, sans-serif;
+    font-size: $g2;
+    font-weight: 700;
+  }
+  @if ($size == 'medium') {
+    line-height: $text-size + $g1;
+    letter-spacing: 0.2px;
+    font-size: $text-size;
+  }
+  @if ($size == 'large') {
+    line-height: $text-size + $g1;
+    letter-spacing: 0.2px;
+    font-size: $text-size;
+  }
+  @media only screen and (min-width: $tablet-min) {
+    @if ($size == 'large') {
+      line-height: $g4;
+      font-size: $g3;
+    }
+  }
+}
+
+@mixin current-text($size: 'medium') {
+  letter-spacing: 0;
+  font-family: $work, sans-serif;
+  font-weight: 500;
+  @if ($size == 'medium') {
+    line-height: $g3;
+    font-size: $g2;
+  }
+  @if ($size == 'small') {
+    line-height: $g3 - 2;
+    font-size: $g2 - 2;
+  }
+  @if ($size == 'x-small') {
+    line-height: $g3 - 4;
+    font-size: $g2 - 4;
+  }
+}

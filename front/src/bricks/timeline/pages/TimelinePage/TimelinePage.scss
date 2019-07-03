@@ -1,0 +1,8 @@
+@import '../../../core.scss';
+
+.timeline-page {
+  &--footer {
+    margin: auto;
+    max-width: $desktop;
+  }
+}

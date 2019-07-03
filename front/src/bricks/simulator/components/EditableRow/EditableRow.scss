@@ -1,0 +1,36 @@
+@import '../../../core.scss';
+
+.editable-row {
+  margin-bottom: $g2;
+
+  &--label {
+    cursor: pointer;
+  }
+
+  &--value {
+    display: inline-block;
+    max-width: $g2 * 10;
+
+    &--amount {
+      .numberfield--input input {
+        background: transparent;
+        color: inherit;
+        font: inherit;
+      }
+    }
+
+    &--currency {
+      margin: 0 $g2 2px 0;
+      cursor: pointer;
+    }
+
+    &--icon {
+      cursor: pointer;
+      color: $neutral-1-30;
+
+      &:hover {
+        color: $primary-1;
+      }
+    }
+  }
+}

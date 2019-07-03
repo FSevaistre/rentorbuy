@@ -1,0 +1,11 @@
+@import '../../../core.scss';
+
+.information-rows {
+  &--row {
+    margin-bottom: $g2;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

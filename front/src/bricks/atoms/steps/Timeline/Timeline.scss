@@ -1,0 +1,127 @@
+@import '../../../core.scss';
+
+%glow {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    animation: glow 2s linear infinite;
+    border-radius: 50%;
+    background: inherit;
+    content: '';
+  }
+}
+
+.timeline--step {
+  @include sub-heading;
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-bottom: $g3;
+
+  &--dot {
+    @include variants('background-color', 'normal');
+    flex: 0 0 $g1;
+    align-self: flex-start;
+    margin-top: $g1 + 1;
+    margin-right: $g2;
+    border-radius: $g1;
+    height: $g1;
+  }
+
+  &--line {
+    @include variants('background-color', 'normal');
+    position: absolute;
+    top: 20px;
+    bottom: -30px;
+    left: 3px;
+    margin-top: 0;
+    width: 2px;
+  }
+
+  &--current {
+    .timeline--step {
+      &--line,
+      &--dot {
+        background-color: $neutral-1-20;
+      }
+    }
+  }
+
+  &--after {
+    color: $neutral-1-40;
+
+    .timeline--step {
+      &--dot {
+        background-color: $neutral-1-20;
+      }
+
+      &--line {
+        background-color: $neutral-1-20;
+      }
+    }
+  }
+
+  &:last-child {
+    .timeline--step {
+      &--line {
+        display: none;
+      }
+    }
+  }
+
+  &--active {
+    .timeline--step {
+      &--content {
+        @include variants('color', 'normal');
+      }
+
+      &--dot {
+        @extend %glow;
+        @include variants('background-color', 'normal');
+      }
+    }
+  }
+
+  &--title {
+    padding: $g2 0;
+    min-height: $g6;
+
+    .timeline--step {
+      &--content {
+        @include current-text('small');
+        @include variants('color', 'normal');
+      }
+
+      &--line {
+        top: calc(50% + #{$g2});
+        margin-top: $g1 / 2 + 2px;
+      }
+
+      &--divider {
+        flex-grow: 1;
+        margin-left: $g2;
+      }
+    }
+  }
+}
+
+@keyframes glow {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

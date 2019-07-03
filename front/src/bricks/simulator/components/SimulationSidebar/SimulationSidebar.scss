@@ -1,0 +1,11 @@
+@import '../../../core.scss';
+
+.simulation-sidebar {
+  @media screen and (min-width: $tablet-max) {
+    padding-top: $g3;
+  }
+
+  &--divider {
+    margin: $g2 0;
+  }
+}

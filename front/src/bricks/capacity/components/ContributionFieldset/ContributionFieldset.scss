@@ -1,0 +1,43 @@
+@import '../../../core.scss';
+
+%suffix {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid $primary-1;
+}
+
+.contribution-fieldset {
+  white-space: nowrap;
+
+  &--input {
+    display: flex;
+
+    &--numberfield {
+      flex-grow: 1;
+
+      .numberfield--input {
+        padding-right: $g1;
+
+        input {
+          @include sub-heading();
+          text-align: right;
+        }
+      }
+    }
+
+    &--currency {
+      @extend %suffix;
+      padding-right: $g2;
+    }
+
+    &--icon {
+      @extend %suffix;
+      cursor: pointer;
+      color: $neutral-1-30;
+
+      &:hover {
+        color: $primary-1;
+      }
+    }
+  }
+}

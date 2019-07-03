@@ -1,0 +1,42 @@
+@import '../../../core.scss';
+
+.dashboard-highlights-details {
+  display: flex;
+  margin: 0 $g2 * -1;
+  overflow: auto;
+  padding-left: $g2;
+
+  @media screen and (min-width: $desktop-min) {
+    flex-wrap: wrap;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  &__card {
+    flex-shrink: 0;
+    min-width: $g7 * 2;
+
+    @media screen and (min-width: $desktop-min) {
+      min-width: $g10 * 2;
+
+      &__content {
+        padding-right: $g2;
+      }
+    }
+  }
+  &__card + &__card {
+    margin-left: $g1;
+  }
+
+  &__placeholder {
+    &--title {
+      margin-bottom: $g1 + 2;
+      width: 58%;
+    }
+
+    &--content {
+      width: 65%;
+      height: $g3;
+    }
+  }
+}

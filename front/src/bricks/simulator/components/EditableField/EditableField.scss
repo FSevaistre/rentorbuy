@@ -1,0 +1,21 @@
+@import '../../../core.scss';
+
+.editable-field {
+  &--value {
+    display: flex;
+    align-items: center;
+
+    &--amount {
+      &--fixed {
+        padding: 0 $g1;
+      }
+    }
+
+    &--currency {
+      flex-grow: 1;
+      border-bottom: 2px solid $primary-1;
+      height: $g6;
+      line-height: $g6;
+    }
+  }
+}

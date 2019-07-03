@@ -1,0 +1,18 @@
+@import '../../../core.scss';
+
+.sentences-group {
+  &--remove {
+    margin-bottom: $g2;
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max - 1) {
+      margin-right: $g2;
+      margin-left: $g2;
+    }
+  }
+
+  &--add {
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max - 1) {
+      margin-right: $g2;
+      margin-left: $g2;
+    }
+  }
+}

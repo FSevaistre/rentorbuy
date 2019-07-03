@@ -1,0 +1,36 @@
+@import '../../../core.scss';
+
+.choice-card {
+  transition: transform 300ms ease-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  &--content {
+    display: flex;
+    justify-content: space-between;
+
+    &--main {
+      &--title {
+        display: flex;
+        margin-bottom: $g2;
+
+        &--emoji {
+          margin-right: $g2;
+          @media screen and (min-width: $tablet-min) {
+            margin-right: $g3;
+          }
+        }
+      }
+    }
+
+    &--button {
+      margin-left: $g2;
+      @media screen and (min-width: $tablet-min) {
+        margin-left: $g3;
+      }
+    }
+  }
+}

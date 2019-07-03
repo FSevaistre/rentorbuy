@@ -1,0 +1,166 @@
+@import '../../../core.scss';
+
+%list-sentence {
+  position: relative;
+  border-top: 1px solid $neutral-1-20;
+  border-bottom: 1px solid $neutral-1-20;
+  padding: $g2;
+  padding-left: $g6;
+  @media screen and (min-width: $tablet-min) {
+    border-right: 1px solid $neutral-1-20;
+    border-radius: $g1;
+    padding: $g2;
+    padding-left: $g7;
+  }
+}
+
+%list-decoration {
+  display: flex;
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: 0;
+  justify-content: center;
+  background: $primary-1;
+  width: $g4;
+  color: $white;
+  @media screen and (min-width: $tablet-min) {
+    border-radius: $g1 0 0 $g1;
+  }
+}
+
+.sentence {
+  position: relative;
+  transition: right linear 300ms;
+  margin: 0 $g2 $g3;
+  line-height: $g5;
+  @media screen and (min-width: $tablet-min) {
+    margin-bottom: $g2;
+  }
+
+  &--with-label {
+    margin-bottom: $g2;
+    line-height: $g3;
+  }
+
+  &--error {
+    @include current-text('small');
+    color: $error;
+  }
+
+  &--action {
+    @extend %list-sentence;
+    margin-right: 0;
+    margin-left: 0;
+    border-style: dashed;
+    cursor: pointer;
+    padding-top: $g1;
+    padding-bottom: $g1;
+    @media screen and (min-width: $tablet-min) {
+      padding-top: $g2;
+      padding-bottom: $g2;
+    }
+
+    &:after {
+      @extend %list-decoration;
+      align-items: center;
+      content: '+';
+    }
+  }
+
+  &--label {
+    padding-top: $g1;
+    line-height: 0;
+  }
+
+  &--list {
+    @extend %list-sentence;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+    overflow: hidden;
+
+    @media screen and (min-width: $tablet-min) {
+      padding: $g2 $g6;
+      overflow: initial;
+    }
+
+    &--position {
+      position: relative;
+      background: $neutral-1-l;
+      height: $g4;
+      @media screen and (min-width: $tablet-min) {
+        position: absolute;
+        top: 0;
+        bottom: -1px;
+        left: 0;
+        background: initial;
+        width: $g4;
+        height: initial;
+      }
+
+      &--number {
+        @extend %list-decoration;
+        bottom: 0;
+        align-items: center;
+        @media screen and (min-width: $tablet-min) {
+          align-items: initial;
+          padding-top: $g2;
+        }
+      }
+
+      + .sentence--list--content {
+        padding: $g2;
+        @media screen and (min-width: $tablet-min) {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  &--helper {
+    position: absolute;
+    right: 0;
+    bottom: $g1 / 2;
+
+    &--wrapper {
+      display: inline-block;
+    }
+
+    &--hidden {
+      display: inline-block;
+      visibility: hidden;
+      opacity: 0;
+      width: $g6;
+      height: $g4;
+      vertical-align: middle;
+    }
+
+    &--clicked {
+      opacity: 0.3;
+    }
+  }
+
+  &--delete {
+    display: flex;
+    position: absolute;
+    top: -1px;
+    bottom: $g3;
+    left: 100%;
+    align-items: center;
+    justify-content: center;
+    transition: left linear 300ms;
+    background: $error;
+    padding: $g2;
+    width: 50%;
+    color: $white;
+  }
+}
+
+.sentences--delete--wrapper {
+  position: relative;
+  overflow: hidden;
+  @media screen and (min-width: $tablet-min) {
+    overflow: visible;
+  }
+}

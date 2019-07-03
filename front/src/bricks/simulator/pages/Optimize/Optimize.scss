@@ -1,0 +1,13 @@
+@import '../../../core.scss';
+
+.optimize {
+  &--back {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &--icon {
+      margin-right: $g3;
+    }
+  }
+}

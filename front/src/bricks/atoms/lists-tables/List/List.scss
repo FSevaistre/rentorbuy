@@ -1,0 +1,77 @@
+@import '../../../core.scss';
+
+.list {
+  margin: 0;
+  border-bottom: 0;
+  padding: 0;
+  list-style: none;
+
+  &--selectfield--dropdown {
+    @include box-shadow(2);
+    border-radius: $g1;
+    background: $white;
+    overflow: hidden;
+    @media screen and (min-width: $tablet-min) {
+      position: absolute;
+      top: 32px;
+      left: -$g1;
+      z-index: 999;
+      margin-bottom: $g3;
+      min-width: calc(100% + #{$g2});
+      max-height: $g6 * 6 + 5; // 6 items + 5 Dividers
+      overflow-y: auto;
+    }
+
+    .list-item {
+      background-color: #fff;
+      cursor: pointer;
+
+      @media screen and (min-width: $tablet-min) {
+        transition: all 300ms linear;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      &--content {
+        padding: ($g1 + $g1 / 2) $g2;
+        height: auto;
+        line-height: $g3;
+      }
+
+      &:hover {
+        background-color: $neutral-1-l;
+      }
+
+      .icon {
+        margin-left: $g2;
+      }
+    }
+  }
+}
+
+// FORMATS
+
+// default
+.list--default {
+  background-color: $white;
+}
+
+// documents
+.list--documents {
+  background-color: transparent;
+
+  .list-item:hover {
+    color: $primary-1;
+  }
+}
+
+// uploaded documents
+.list--uploaded-documents {
+  background-color: transparent;
+
+  .list-item {
+    .list-item--content {
+      position: relative;
+    }
+  }
+}

@@ -1,0 +1,257 @@
+// transition mixin
+@mixin transition($transition...) {
+  transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+}
+@mixin transition-property($property...) {
+  -moz-transition-property: $property;
+  -o-transition-property: $property;
+  -webkit-transition-property: $property;
+  transition-property: $property;
+}
+@mixin transition-duration($duration...) {
+  -moz-transition-property: $duration;
+  -o-transition-property: $duration;
+  -webkit-transition-property: $duration;
+  transition-property: $duration;
+}
+@mixin transition-timing-function($timing...) {
+  -moz-transition-timing-function: $timing;
+  -o-transition-timing-function: $timing;
+  -webkit-transition-timing-function: $timing;
+  transition-timing-function: $timing;
+}
+@mixin transition-delay($delay...) {
+  -moz-transition-delay: $delay;
+  -o-transition-delay: $delay;
+  -webkit-transition-delay: $delay;
+  transition-delay: $delay;
+}
+
+// ----------------------------------------------- \\
+// --------------- transtion types --------------- \\
+// ----------------------------------------------- \\
+@mixin scale($s) {
+  @include transition(all 200ms ease-in-out);
+  transform: scale($s);
+}
+
+@mixin transition-group($in, $out, $duration: 300ms) {
+  &-enter {
+    @each $key, $value in $in {
+      #{$key}: $value;
+    }
+  }
+
+  &-enter-active {
+    @include transition(all $duration ease-in-out);
+    @each $key, $value in $out {
+      #{$key}: $value;
+    }
+  }
+
+  &-exit {
+    @include transition(all $duration ease-in-out);
+    @each $key, $value in $out {
+      #{$key}: $value;
+    }
+  }
+
+  &-exit-active {
+    @each $key, $value in $in {
+      #{$key}: $value;
+    }
+  }
+}
+
+@mixin property-transition($class-name, $prop, $initial-value, $end-value, $duration: 300ms) {
+  $in: (
+    $prop: $initial-value
+  );
+  $out: (
+    $prop: $end-value
+  );
+
+  .#{$class-name} {
+    @include transition-group($in, $out, $duration);
+  }
+}
+
+@mixin scale-transition($class-name, $duration: 300ms) {
+  $in: (
+    transform: scale(0)
+  );
+  $out: (
+    transform: scale(1)
+  );
+
+  .#{$class-name} {
+    @include transition-group($in, $out, $duration);
+  }
+}
+
+@mixin height($class-name, $height: 100%, $duration: 300ms) {
+  $in: (
+    height: 0
+  );
+  $out: (
+    height: $height
+  );
+
+  .#{$class-name} {
+    @include transition-group($in, $out, $duration);
+  }
+}
+
+@mixin width($class-name, $width: 100%, $duration: 300ms) {
+  $in: (
+    width: 0
+  );
+  $out: (
+    width: $width
+  );
+
+  .#{$class-name} {
+    @include transition-group($in, $out, $duration);
+  }
+}
+
+@mixin dropdown($class-name) {
+  .#{$class-name}-enter {
+    transform: translateY(-2em);
+    opacity: 0;
+  }
+
+  .#{$class-name}-enter.#{$class-name}-enter-active {
+    @include transition(all 300ms ease-in-out);
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .#{$class-name}-exit {
+    opacity: 1;
+  }
+
+  .#{$class-name}-exit.#{$class-name}-exit-active {
+    @include transition(all 300ms ease-in-out);
+    transform: translateY(-2em);
+    opacity: 0;
+  }
+}
+
+@mixin show($class-name, $duration: 500ms) {
+  .#{$class-name}-enter {
+    opacity: 0;
+  }
+
+  .#{$class-name}-enter.#{$class-name}-enter-active {
+    @include transition(all $duration ease-in-out);
+    opacity: 1;
+  }
+
+  .#{$class-name}-exit {
+    opacity: 1;
+  }
+
+  .#{$class-name}-exit.#{$class-name}-exit-active {
+    @include transition(all $duration ease-in-out);
+    opacity: 0;
+  }
+}
+
+@mixin slide($class-name, $direction: 'left', $duration: 500ms) {
+  .#{$class-name}-enter {
+    opacity: 0;
+
+    @if $direction == 'top' {
+      transform: translateY(-100%);
+    }
+    @if $direction == 'right' {
+      transform: translateX(100%);
+    }
+    @if $direction == 'bottom' {
+      transform: translateY(100%);
+    }
+    @if $direction == 'left' {
+      transform: translateX(-100%);
+    }
+  }
+
+  .#{$class-name}-enter.#{$class-name}-enter-active {
+    @include transition(all $duration ease-in-out);
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  .#{$class-name}-exit {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  .#{$class-name}-exit.#{$class-name}-exit-active {
+    @include transition(all $duration ease-in-out);
+    opacity: 0;
+
+    @if $direction == 'top' {
+      transform: translateY(-100%);
+    }
+    @if $direction == 'right' {
+      transform: translateX(100%);
+    }
+    @if $direction == 'bottom' {
+      transform: translateY(100%);
+    }
+    @if $direction == 'left' {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+// ----------------------------------------------- \\
+// --------------- modal transtions -------------- \\
+// ----------------------------------------------- \\
+
+@mixin modal($class-name) {
+  .#{$class-name} {
+    @include transition(all 300ms ease-in-out);
+    opacity: 0;
+  }
+
+  .#{$class-name}-after-open {
+    opacity: 1;
+  }
+
+  .#{$class-name}-before-close {
+    opacity: 0;
+  }
+}
+
+@mixin modal-dropdown($class-name) {
+  .#{$class-name} {
+    @include transition(all 300ms ease-in-out);
+    transform: translateY(-2em);
+    opacity: 0;
+  }
+
+  .#{$class-name}-after-open {
+    @include transition(all 300ms ease-in-out);
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .#{$class-name}-before-close {
+    @include transition(all 300ms ease-in-out);
+    transform: translateY(-2em);
+    opacity: 0;
+  }
+}
+
+@include property-transition(transition--drop-down, transform, translateY(-2em), translateY(0), 500ms);
+@include property-transition(transition--drop-down, opacity, 0, 1, 500ms);
+@include property-transition(transition--slide-right, transform, translateX(2em), translateX(0), 500ms);
+@include property-transition(transition--slide-right, opacity, 0, 1, 500ms);
+@include property-transition(transition--slide-left, transform, translateX(-50%), translateX(0), 500ms);
+@include property-transition(transition--slide-left, opacity, 0, 1, 500ms);
+@include property-transition(transition--opacity, opacity, 0, 1, 500ms);

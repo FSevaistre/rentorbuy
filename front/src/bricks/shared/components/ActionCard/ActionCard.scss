@@ -1,0 +1,121 @@
+@import '../../../core.scss';
+
+.action-card {
+  display: flex;
+  flex-grow: 1;
+  max-width: 100%;
+
+  &--pushed-content,
+  &--description {
+    margin-bottom: $g1;
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g2;
+    }
+  }
+
+  &--divider {
+    margin-bottom: $g2;
+  }
+
+  &--data {
+    margin-bottom: $g5 + $g5;
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g6 + $g5;
+    }
+
+    &--row {
+      margin-bottom: $g1;
+    }
+  }
+
+  &--option-number {
+    margin-top: 2px;
+  }
+
+  &--title {
+    margin-bottom: 4px;
+  }
+
+  &--pushed-content {
+    display: flex;
+
+    &--emoji {
+      display: flex;
+      align-items: center;
+      margin-right: $g2;
+      @media screen and (min-width: $tablet-min) {
+        margin-right: $g3;
+      }
+    }
+
+    &--amount {
+      flex-grow: 1;
+    }
+
+    &--icon {
+      align-self: center;
+      margin-left: $g2;
+      cursor: pointer;
+
+      &--content {
+        display: flex;
+        margin-bottom: $g4;
+        cursor: pointer;
+
+        &--text {
+          margin-left: $g2;
+        }
+      }
+    }
+  }
+
+  &--button {
+    position: absolute;
+    right: $g2;
+    bottom: $g2;
+    left: $g2;
+    @media screen and (min-width: $tablet-min) {
+      right: $g3;
+      bottom: $g3;
+      left: $g3;
+    }
+  }
+
+  // formats
+  &--button-middle {
+    .action-card {
+      &--button {
+        position: initial;
+        right: initial;
+        bottom: initial;
+        left: initial;
+        margin-bottom: $g2;
+        @media screen and (min-width: $tablet-min) {
+          margin-bottom: $g4;
+        }
+      }
+
+      &--description {
+        margin-bottom: 0;
+      }
+
+      &--data {
+        margin-bottom: 0;
+        @media screen and (min-width: $tablet-min) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &--capacity {
+    .action-card {
+      &--button {
+        position: initial;
+        right: initial;
+        bottom: initial;
+        left: initial;
+      }
+    }
+  }
+}

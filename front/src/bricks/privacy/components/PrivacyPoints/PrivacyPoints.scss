@@ -1,0 +1,53 @@
+@import '../../../core.scss';
+
+.privacy-header {
+  &--title {
+    display: flex;
+    margin-bottom: $g2;
+
+    &--emoji {
+      margin-right: $g3;
+    }
+  }
+
+  &--points {
+    margin-top: $g5;
+    @media screen and (min-width: $tablet-min) {
+      display: flex;
+    }
+
+    &--elem {
+      display: flex;
+      margin-bottom: $g3;
+      @media screen and (min-width: $tablet-min) {
+        display: initial;
+        flex: 1 1 33.33%;
+        margin-right: $g5;
+        margin-bottom: 0;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      &--check {
+        display: flex;
+        flex: 0 0 $g4;
+        align-items: center;
+        justify-content: center;
+        margin-right: $g2;
+        margin-bottom: $g2;
+        border-radius: $g4;
+        background: $accent-1;
+        width: $g4;
+        height: $g4;
+        @media screen and (min-width: $tablet-min) {
+          flex: 0 0 $g5;
+          border-radius: $g5;
+          width: $g5;
+          height: $g5;
+        }
+      }
+    }
+  }
+}

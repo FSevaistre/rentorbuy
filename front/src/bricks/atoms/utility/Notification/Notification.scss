@@ -1,0 +1,10 @@
+@import '../../../core.scss';
+
+@include property-transition('notification--transition', opacity, 0, 1, 250ms);
+
+.notification {
+  position: fixed;
+  top: $g10;
+  right: $g5;
+  z-index: 999;
+}

@@ -1,0 +1,32 @@
+@import '../../../core.scss';
+
+.header {
+  background-color: $primary-1;
+  padding: $g2;
+  line-height: $g3;
+  color: #fff;
+  font-size: $g3;
+}
+
+@media only screen and (min-width: $mobile) {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $g3;
+    height: $g8;
+    font-size: $g2;
+
+    &--logo {
+      height: $g3;
+
+      &--clickable {
+        cursor: pointer;
+      }
+
+      &--full-height {
+        height: 100%;
+      }
+    }
+  }
+}

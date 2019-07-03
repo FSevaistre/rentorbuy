@@ -1,0 +1,18 @@
+@import '../../../core.scss';
+
+.sponsorship-add-card {
+  cursor: pointer;
+  height: 100%;
+
+  &--icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 128px;
+    min-height: 128px;
+    font-size: $g3;
+    @media screen and (min-width: $tablet-min) {
+      height: 100%;
+    }
+  }
+}

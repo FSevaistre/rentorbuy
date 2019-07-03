@@ -1,0 +1,17 @@
+@import '../../../core.scss';
+
+.pretto-logo {
+  display: inline-block;
+
+  &--small {
+    height: $g2;
+  }
+
+  &--medium {
+    height: $g3;
+  }
+
+  &--large {
+    height: $g4;
+  }
+}

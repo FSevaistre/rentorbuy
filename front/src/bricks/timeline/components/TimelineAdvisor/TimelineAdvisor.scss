@@ -1,0 +1,52 @@
+@import '../../../core.scss';
+
+.timeline-advisor {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background: $white;
+
+  &--wrapper {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    padding: $g2;
+    max-width: $desktop;
+    @media screen and (min-width: $tablet-min) {
+      padding-right: $g3;
+      padding-left: $g3;
+    }
+  }
+
+  &--picture {
+    margin-right: $g3;
+  }
+
+  &--infos {
+    margin-right: $g3;
+
+    &--title {
+      opacity: 0.4;
+    }
+
+    &--name {
+      @include sub-heading;
+    }
+  }
+
+  &--actions {
+    display: flex;
+    align-items: center;
+
+    &--icon {
+      margin-right: $g1;
+      padding: $g1;
+      @media screen and (min-width: $tablet-min) {
+        margin-right: 0;
+        cursor: pointer;
+      }
+    }
+  }
+}

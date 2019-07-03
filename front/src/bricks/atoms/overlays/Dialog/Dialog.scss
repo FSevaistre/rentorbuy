@@ -1,0 +1,60 @@
+@import '../../../core.scss';
+
+.dialog--overlay {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background-color: $neutral-1-80;
+  padding: $g3;
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.dialog--content {
+  position: initial;
+  outline: none;
+  border: 0;
+  border-radius: $g1;
+  background: $white;
+  width: 100%;
+  max-width: 600px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  p:not(:last-child) {
+    margin-bottom: $g2;
+  }
+}
+
+// Disable scroll when dialog is open
+body.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+@include modal-dropdown('dialog--content');
+@include modal('dialog--overlay');
+
+@media only screen and (max-width: $tablet-min) {
+  .dialog--overlay {
+    padding: 0;
+  }
+
+  .dialog--content {
+    border-radius: 0;
+    width: 100%;
+    max-width: initial;
+    height: 100%;
+  }
+}
+
+// formats
+.dialog--overflow-initial {
+  overflow: initial;
+}

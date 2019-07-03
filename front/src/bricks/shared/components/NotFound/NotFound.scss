@@ -1,0 +1,46 @@
+@import '../../../core.scss';
+
+.not-found {
+  &--title {
+    @include heading('large');
+    margin-bottom: $g2;
+    font-size: $g7;
+    @media screen and (min-width: $tablet-min) {
+      // margin-bottom: $g3;
+      font-size: $g10;
+    }
+
+    &--number {
+      padding-right: $g1;
+      vertical-align: middle;
+
+      &:last-child {
+        padding-right: 0;
+        padding-left: $g1;
+      }
+    }
+  }
+
+  &--content {
+    margin-bottom: $g4;
+  }
+
+  &--links {
+    &--title {
+      @include sub-heading;
+      margin-bottom: $g2;
+    }
+
+    &--list {
+      &--item {
+        margin-bottom: $g1;
+        text-decoration: underline;
+        color: $primary-1;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

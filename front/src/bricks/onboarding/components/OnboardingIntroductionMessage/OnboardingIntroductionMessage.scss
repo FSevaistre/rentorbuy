@@ -1,0 +1,45 @@
+@import '../../../core.scss';
+
+.onboarding-introduction-message {
+  margin: $g2 0 $g1 $g5;
+
+  @media screen and (min-width: $tablet-min) {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: $g7;
+  }
+
+  p:not(:last-child) {
+    margin-bottom: $g2;
+  }
+
+  &--actions {
+    display: flex;
+    margin-bottom: $g1;
+    cursor: pointer;
+    @media screen and (min-width: $tablet-min) {
+      display: block;
+      margin-right: $g2;
+      margin-bottom: 0;
+    }
+
+    &--content {
+      display: flex;
+      align-items: center;
+      margin: $g5 $g3;
+      height: $g3;
+
+      &--icon {
+        margin-right: $g2;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  &--title {
+    margin-bottom: $g1;
+  }
+}

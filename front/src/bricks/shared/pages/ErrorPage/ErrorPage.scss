@@ -1,0 +1,59 @@
+@import '../../../core.scss';
+
+.error-page {
+  margin: $g2;
+  max-width: $mobile;
+  @media screen and (min-width: $mobile) {
+    margin: $g2 auto;
+  }
+  @media screen and (min-width: $tablet-min) {
+    margin: 20vh auto 0;
+    padding-left: $g7 + $g3;
+    max-width: $tablet-min;
+  }
+  @media screen and (min-width: $tablet-max) {
+    max-width: $tablet-max;
+  }
+
+  &--title {
+    @include heading('large');
+    display: flex;
+    align-items: center;
+    @media screen and (min-width: $tablet-min) {
+      margin-left: -($g7 + $g3);
+    }
+
+    &--emoji {
+      margin-right: $g3;
+    }
+  }
+
+  &--content {
+    margin: $g3 0;
+  }
+
+  &--details {
+    margin: $g3 0;
+  }
+
+  &--detail {
+    display: list-item;
+    margin-left: $g2;
+    list-style-type: disc;
+  }
+
+  &--more-information {
+    margin-top: $g2;
+
+    &--link {
+      margin-top: $g2;
+      text-decoration: underline;
+    }
+  }
+
+  &--reload {
+    &--text {
+      margin-bottom: $g3;
+    }
+  }
+}

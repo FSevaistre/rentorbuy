@@ -1,0 +1,13 @@
+.alert--banner {
+  position: absolute;
+  left: 0;
+  margin: 0;
+  border-radius: 0;
+  width: 100%;
+}
+
+.alert--banner-hidden {
+  position: initial;
+  visibility: hidden;
+  opacity: 0;
+}

@@ -1,0 +1,49 @@
+@import '../../../core.scss';
+
+.confirm-page {
+	margin: auto;
+	max-width: $desktop;
+
+	&__container {
+		padding: $g3 $g2;
+
+		@media screen and (min-width: $tablet-min) {
+			padding: $g5;
+			width: 83.33333%;
+		}
+	}
+
+	&__check {
+		margin: $g5 0;
+	}
+
+	&__detail {
+		margin-bottom: $g2;
+
+		&__title {
+			margin-bottom: $g2;
+		}
+	}
+
+	&__disclaimer {
+		margin-bottom: $g1;
+
+		&__content a {
+			text-decoration: underline;
+		}
+	}
+
+	&__header {
+		margin-bottom: $g5;
+	}
+
+	&__message {
+		margin-bottom: $g1;
+	}
+
+	&__wrapper {
+		@media screen and (min-width: $tablet-min) {
+			margin-left: $g7;
+		}
+	}
+}

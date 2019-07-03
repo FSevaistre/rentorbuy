@@ -1,0 +1,34 @@
+@import '../../../core.scss';
+
+.loan-amount-details {
+  &--description {
+    margin-bottom: $g2;
+  }
+
+  &--calculation {
+    margin-top: $g3;
+
+    &--row {
+      &:not(:last-child) {
+        margin-bottom: $g3;
+      }
+
+      &--content {
+        position: relative;
+        padding-left: $g4;
+
+        &--icon {
+          position: absolute;
+          top: $g1 / 2;
+          left: 0;
+          padding: $g1 / 4;
+          font-size: $g1 * 1.5;
+        }
+      }
+    }
+  }
+
+  &--result {
+    margin-top: $g2;
+  }
+}

@@ -1,0 +1,11 @@
+@import '../../../core.scss';
+
+.summary {
+	&__row + &__row {
+		margin-top: $g3;
+	}
+
+	&__title {
+		margin-bottom: $g2;
+	}
+}

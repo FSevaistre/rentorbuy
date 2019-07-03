@@ -1,0 +1,35 @@
+@import '../../../core.scss';
+
+.sponsorship-social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  width: $g7;
+  height: $g7;
+  font-size: $g3;
+
+  $social: facebook $facebook, twitter $twitter, linkedin $linkedin, whatsapp $whatsapp;
+  @each $network in $social {
+    $class: nth($network, 1);
+    $color: nth($network, 2);
+
+    &--#{$class} {
+      background: $color;
+    }
+  }
+
+  $sizes: small $g4 $g2, medium $g7 $g3;
+  @each $size in $sizes {
+    $class: nth($size, 1);
+    $s: nth($size, 2);
+    $fs: nth($size, 3);
+
+    &--#{$class} {
+      width: $s;
+      height: $s;
+      font-size: $fs;
+    }
+  }
+}

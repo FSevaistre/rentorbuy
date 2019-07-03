@@ -1,0 +1,33 @@
+@import '../../../core.scss';
+
+.privacy-contact {
+  @media screen and (min-width: $mobile) {
+    display: flex;
+  }
+
+  &--item {
+    margin-bottom: $g3;
+    @media screen and (min-width: $mobile) {
+      flex: 1 1 50%;
+      margin-right: $g4;
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--title {
+      margin-bottom: $g2;
+    }
+
+    &--address {
+      margin-bottom: $g1;
+
+      a {
+        text-decoration: underline;
+        color: $primary-1;
+      }
+    }
+  }
+}

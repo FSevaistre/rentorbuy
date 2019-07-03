@@ -1,0 +1,45 @@
+@import '../../../core.scss';
+
+.maturity-choice {
+  cursor: pointer;
+
+  &--wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &--content {
+    display: flex;
+    align-items: center;
+
+    &--emoji {
+      display: inline;
+      margin-right: $g2;
+    }
+
+    &--text {
+      @media screen and (min-width: $mobile) {
+        flex-grow: 1;
+        margin-right: $g2;
+      }
+
+      &--placeholder {
+        display: inline-block;
+        width: 200px;
+      }
+    }
+  }
+
+  &--edit {
+    flex: 0 0 100%;
+    margin-top: $g2;
+    line-height: $g2;
+    color: $primary-1;
+    @media screen and (min-width: $mobile) {
+      flex: initial;
+      margin-top: 0;
+      margin-left: auto;
+    }
+  }
+}

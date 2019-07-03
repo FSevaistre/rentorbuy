@@ -1,0 +1,11 @@
+@import '../../../core.scss';
+
+.simulation-sliders {
+  &--slider {
+    margin-bottom: $g2;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

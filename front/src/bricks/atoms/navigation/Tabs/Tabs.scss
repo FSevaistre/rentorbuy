@@ -1,0 +1,22 @@
+@import '../../../core.scss';
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid $neutral-1-20;
+  line-height: $g6;
+  font-family: 'Work Sans';
+  @media screen and (min-width: $mobile) {
+    justify-content: flex-start;
+  }
+  @media screen and (min-width: $tablet-min) {
+    line-height: $g7;
+  }
+}
+
+// FORMAT
+.tabs--full {
+  .tab {
+    flex-grow: 1;
+  }
+}

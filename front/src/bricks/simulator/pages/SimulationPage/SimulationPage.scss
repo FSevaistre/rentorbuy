@@ -1,0 +1,66 @@
+@import '../../../core.scss';
+
+.simulation-page {
+  overflow: hidden;
+
+  &--container {
+    position: relative;
+    @media screen and (min-width: $tablet-min) {
+      min-height: calc(100vh - #{$g8 + $g6 + 2});
+    }
+    @media screen and (min-width: $tablet-max) {
+      display: flex;
+      margin: auto;
+      max-width: $desktop;
+    }
+  }
+
+  &--sidebar {
+    position: relative;
+    flex: 1 1 33.33%;
+    background: $neutral-1-l;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 100%;
+      bottom: 0;
+      left: calc(150% - 50vw);
+      background: $neutral-1-l;
+      content: '';
+    }
+
+    &__b {
+      background: initial;
+
+      &:after {
+        background: initial;
+      }
+    }
+  }
+
+  &--content {
+    position: relative;
+    @media screen and (min-width: $tablet-min) {
+      margin-left: $g3;
+    }
+    @media screen and (min-width: $tablet-max) {
+      flex: 1 1 66.66%;
+      margin-left: 0;
+    }
+
+    &__b {
+      background: $neutral-1-l;
+
+      &:after {
+        position: absolute;
+        top: 0;
+        right: calc(75% - 50vw);
+        bottom: 0;
+        left: 100%;
+        background: $neutral-1-l;
+        content: '';
+      }
+    }
+  }
+}

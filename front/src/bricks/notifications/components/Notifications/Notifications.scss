@@ -1,0 +1,29 @@
+@import '../../../core.scss';
+
+@include property-transition('notifications--item--transition', opacity, 0, 1, 250ms);
+@include property-transition('notifications--item--transition', max-height, 0, 120px, 250ms);
+
+.notifications {
+  &--item {
+    position: relative;
+    margin-bottom: $g2;
+    width: 320px;
+    box-sizing: content-box;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--close {
+      position: absolute;
+      top: $g2;
+      right: $g2;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    &__close-wrapper {
+      padding-right: $g4;
+    }
+  }
+}

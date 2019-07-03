@@ -1,0 +1,25 @@
+@import '../../../core.scss';
+
+.timeline-steps {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  background: $neutral-1-l;
+  padding-bottom: $g9 + $g2;
+  padding-top: $g3;
+  min-height: calc(100vh - #{$g8 * 2 + 3});
+
+  &--content {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  &--button {
+    position: absolute;
+    bottom: $g10 + $g8;
+    left: $g5;
+    width: $g5;
+    height: $g5;
+  }
+}

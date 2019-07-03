@@ -1,0 +1,26 @@
+@import '../../../core.scss';
+
+.list-item {
+  @include variants('color', 'normal');
+
+  &:focus {
+    outline: 0;
+    background-color: $neutral-1-l;
+  }
+}
+
+.list-item:last-child .divider {
+  display: none;
+}
+
+// FORMATS
+// default
+.list-item--default {
+  .list-item--content {
+    padding: $g2;
+  }
+}
+
+.list-item--pointer {
+  cursor: pointer;
+}

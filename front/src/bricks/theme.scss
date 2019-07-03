@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:500,600,700');
+
+$font-server: 'https://res.cloudinary.com/pretto-fr/raw/upload/';
+$font-folder: '/pretto-ui/fonts/';
+$circular: 'CircularStd-Bold';
+$pretto-ui: 'pretto-ui';
+$circular-woff: $font-server + 'v1546612152' + $font-folder + $circular + '.woff';
+$pretto-ui-woff: $font-server + 'v1558080634' + $font-folder + $pretto-ui + '.woff';
+@font-face {
+  font-family: 'Circular Std';
+  src: url($circular-woff) format('woff');
+  font-weight: bold;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'pretto-ui';
+  src: url($pretto-ui-woff) format('woff');
+  font-weight: normal;
+  font-display: block;
+  font-style: normal;
+}
+
+@import './atoms/imports.scss';
+@import './auth/imports.scss';
+@import './capacity/imports.scss';
+@import './choices/imports.scss';
+@import './dashboard/imports.scss';
+@import './documents/imports.scss';
+@import './maturity/imports.scss';
+@import './more-information/imports.scss';
+@import './notifications/imports.scss';
+@import './privacy/imports.scss';
+@import './project/imports.scss';
+@import './sentences/imports.scss';
+@import './shared/imports.scss';
+@import './simulator/imports.scss';
+@import './sponsorship/imports.scss';
+@import './subscribe/imports.scss';
+@import './timeline/imports.scss';
+@import './onboarding/imports.scss';
+@import './confirm/imports.scss';
