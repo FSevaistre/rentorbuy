@@ -1,4 +1,4 @@
-require "compute_results"
+require "results"
 
 class ResultsController < ApplicationController
 
@@ -17,14 +17,47 @@ class ResultsController < ApplicationController
     end
   end
 
-  def execute
-    request_params =
-      validate_params do
-        required(:income).value(:int?)
-        required(:contribution).value(:int?)
-        required(:zipcode).value(:str?)
-      end
-    render json: ComputeResults.call(request_params)
+  def init
+    puts params
+    init_params = validate_params do
+      required(:income).value(:int?)
+      required(:contribution).value(:int?)
+      required(:zipcode).value(:str?)
+    end
+    render json: Results.init(init_params)
+  end
+
+  def sharpen
+    shrapen_params = validate_params do
+      required(:income).value(:int?)
+      required(:contribution).value(:int?)
+      required(:zipcode).value(:str?)
+
+      required(:price_per_sqm).value(:int?)
+      required(:purchase_surface).value(:int?)
+
+      required(:mortgage_rate).value(:float?)
+      required(:mortgage_duration).value(:int?)
+      required(:insurance_rate).value(:float?)
+
+      required(:land_tax).value(:int?)
+      required(:notary_fees).value(:int?)
+      required(:guaranty_fees).value(:int?)
+      required(:property_charges).value(:int?)
+
+      required(:rent_per_sqm).value(:int?)
+      required(:rented_surface).value(:int?)
+
+      required(:monthly_savings).value(:int?)
+      required(:housing_tax).value(:int?)
+      required(:agency_fees).value(:int?)
+
+      required(:inflation_rate).value(:float?)
+      required(:rent_growth_rate).value(:float?)
+      required(:savings_return_rate).value(:float?)
+      required(:home_price_growth_rate).value(:float?)
+    end
+    render json: Results.sharpen(shrapen_params)
   end
 
   private

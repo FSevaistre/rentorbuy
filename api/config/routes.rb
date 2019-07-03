@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  post "/results", to: "results#execute"
+  post "/initialize", to: "results#init"
+  post "/sharpen", to: "results#sharpen"
 end

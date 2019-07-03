@@ -40,9 +40,6 @@ curl -X POST  -H "Content-Type: application/json" http://localhost:3000/results 
 - home_price_growth_rate: *Float*
  
 ### Outputs
-- income: *Integer* Yearly net income
-- contribution: *Integer* Contribution available for the purchase
-- zipcode: *String* Zipcode of the flat
 - price_per_sqm: *String* Price per square meter
 - purchase_surface: *String* Surface of the good
  
@@ -72,14 +69,14 @@ curl -X POST  -H "Content-Type: application/json" http://localhost:3000/results 
   - payment: *Integer*
   - equilibrium: *Integer*
   - costs: *Array* For each year from 1 to 25
-  - rent: {
+    - rent: {
       - final_savings: *Integer*
       - initial_costs: *Integer*
       - recuring_costs: *Integer*
-    },
+      },
     - purchase: {
       - final_savings: *Integer*
       - initial_costs: *Integer*
       - recuring_costs: *Integer*
-    }
+      }
 }
