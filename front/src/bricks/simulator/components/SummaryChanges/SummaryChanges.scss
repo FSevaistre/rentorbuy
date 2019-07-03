@@ -1,0 +1,15 @@
+@import '../../../core.scss';
+
+.summary-changes {
+  &--tag {
+    margin-bottom: $g3;
+  }
+
+  &--values {
+    margin-bottom: $g2;
+
+    &--row {
+      margin-bottom: $g1;
+    }
+  }
+}

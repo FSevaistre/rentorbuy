@@ -1,0 +1,71 @@
+@import '../../../core.scss';
+
+.alert-template {
+  background: $neutral-1-l;
+  padding-bottom: $g3;
+  min-height: calc(100vh - #{$g6});
+  @media screen and (min-width: $tablet-min) {
+    min-height: calc(100vh - #{$g8});
+  }
+
+  &--header {
+    background: $white;
+    @media screen and (min-width: $tablet-min) {
+      padding: 0 $g3;
+    }
+
+    &--title {
+      padding: $g2;
+      text-align: center;
+      @media screen and (min-width: $tablet-min) {
+        padding: $g5 0 0;
+      }
+    }
+
+    &--description {
+      background: $neutral-1-l;
+      padding: $g4 $g2;
+      text-align: center;
+      @media screen and (min-width: $tablet-min) {
+        background: initial;
+        padding: $g3;
+      }
+    }
+
+    &--alert {
+      position: relative;
+      z-index: 1;
+      margin: 0 auto;
+      padding-bottom: $g2;
+      max-width: $desktop;
+      @media screen and (min-width: $tablet-min) {
+        margin-top: $g5;
+        padding-bottom: $g1;
+      }
+    }
+  }
+
+  &--wrapper {
+    position: relative;
+    z-index: 1;
+    @media screen and (min-width: $tablet-min) {
+      padding: $g3;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background: $white;
+        width: 100%;
+        height: $g6;
+        content: '';
+      }
+    }
+  }
+
+  &--content {
+    margin: 0 auto;
+    max-width: $desktop;
+  }
+}

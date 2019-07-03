@@ -1,0 +1,59 @@
+@import '../../../core.scss';
+
+.bubble-chat {
+  display: flex;
+
+  &--avatar {
+    flex: 0 0;
+    margin-right: $g1;
+
+    &--hidden {
+      min-width: $g4;
+      @media screen and (min-width: $tablet-min) {
+        min-width: $g6;
+      }
+    }
+
+    &--content {
+      display: inline-block;
+      border-radius: 50%;
+      overflow: hidden;
+      vertical-align: middle;
+      text-align: center;
+      text-transform: uppercase;
+      line-height: $g7;
+      color: $neutral-1-l;
+      font-size: $g4;
+    }
+  }
+}
+
+// VARIANTS
+.bubble-chat--avatar--string .bubble-chat--avatar--content {
+  @include variants('background-color', 'dark');
+}
+
+// FORMATS
+// splitted
+.bubble-chat--container .bubble-chat--splitted {
+  display: block;
+  margin-left: $g5;
+
+  @media screen and (min-width: $tablet-min) {
+    display: flex;
+    align-items: flex-start;
+    margin-left: $g7;
+  }
+
+  .bubble-chat--avatar {
+    display: inline-block;
+    margin-bottom: $g1;
+    border: 1px solid $neutral-1-20;
+    border-radius: $g2;
+    padding: $g3;
+    @media screen and (min-width: $tablet-min) {
+      margin-right: $g2;
+      margin-bottom: 0;
+    }
+  }
+}

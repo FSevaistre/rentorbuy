@@ -1,0 +1,93 @@
+@import '../../../core.scss';
+
+.dashboard-page {
+  background: $neutral-1-l;
+  padding-bottom: $g9 + $g2;
+  min-height: calc(100vh - #{$g8 * 2 + 3});
+  overflow: hidden;
+
+  &--wrapper {
+    position: relative;
+    z-index: 1;
+    margin: auto;
+    padding-top: $g3;
+    max-width: $desktop;
+    @media screen and (min-width: $tablet-min) {
+      padding: $g3;
+      padding-left: $g6;
+    }
+    @media screen and (min-width: $tablet-max) {
+      padding-left: $g3;
+    }
+  }
+
+  &--container {
+    @media screen and (min-width: $tablet-min) {
+      display: flex;
+    }
+  }
+
+  &--content {
+    @media screen and (min-width: $tablet-min) {
+      flex: 2 1 auto;
+    }
+    @media screen and (min-width: $tablet-max) {
+      margin-right: $g3/2;
+    }
+
+    &--card {
+      margin-bottom: $g2;
+      @media screen and (min-width: $tablet-min) {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &--sidebar {
+    @media screen and (min-width: $tablet-min) {
+      flex: 1 2 300px;
+      margin: 0 0 0 $g1;
+    }
+    @media screen and (min-width: $tablet-max) {
+      margin: 0 0 0 $g3/2;
+    }
+
+    &--property-found {
+      margin-top: $g7;
+      margin-bottom: $g3;
+      @media screen and (min-width: $tablet-min) {
+        margin-top: $g5;
+        width: 360px;
+      }
+      @media screen and (min-width: $tablet-max) {
+        margin-top: 0;
+        width: initial;
+      }
+    }
+
+    &--drawer {
+      padding: $g2;
+    }
+  }
+
+  &--title {
+    display: flex;
+    margin-bottom: $g2;
+    padding: 0 $g2;
+    @media screen and (min-width: $tablet-min) {
+      align-items: center;
+      margin-bottom: $g4;
+      padding: 0;
+    }
+
+    &--emoji {
+      margin-right: $g2;
+
+      @media screen and (min-width: $tablet-min) {
+        margin-right: $g3;
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@import '../../../core.scss';
+
+.blocked-page {
+  margin: $g2;
+  max-width: $mobile;
+  @media screen and (min-width: $mobile) {
+    margin: $g2 auto;
+  }
+  @media screen and (min-width: $tablet-min) {
+    margin: 20vh auto 0;
+    padding-left: $g7 + $g3;
+    max-width: $tablet-min;
+  }
+  @media screen and (min-width: $tablet-max) {
+    max-width: $tablet-max;
+  }
+
+  &--title {
+    display: flex;
+    align-items: center;
+    @media screen and (min-width: $tablet-min) {
+      margin-left: -($g7 + $g3);
+    }
+
+    &--emoji {
+      margin-right: $g3;
+    }
+  }
+
+  &--content {
+    margin: $g3 0;
+
+    &--link {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import '../../../core.scss';
+
+@include property-transition('form-section--transition', max-height, 0, 350px, 500ms);
+@include property-transition('form-section--transition', opacity, 0, 1, 500ms);
+
+.information-section {
+  &--title {
+    margin-bottom: $g2;
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g3;
+    }
+  }
+
+  &--subtitle {
+    margin-bottom: $g2;
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g3;
+    }
+  }
+
+  &--fields {
+    margin-top: $g4;
+    @media screen and (min-width: $tablet-min) {
+      margin-top: $g5;
+    }
+  }
+
+  &--field {
+    @extend %field;
+  }
+}

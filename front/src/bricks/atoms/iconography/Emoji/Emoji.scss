@@ -1,0 +1,38 @@
+@import '../../../core.scss';
+
+.emoji {
+  display: inline-block;
+  height: auto;
+
+  &--x-small {
+    width: $g2;
+    line-height: $g2;
+  }
+
+  &--small {
+    width: $g3;
+    line-height: $g3;
+  }
+
+  &--medium {
+    width: $g4;
+    line-height: $g4;
+  }
+
+  &--large {
+    width: $g6;
+    line-height: $g6;
+  }
+
+  &--x-large {
+    width: $g7;
+    line-height: $g7;
+  }
+
+  &--img {
+    display: block;
+    width: inherit;
+    height: auto;
+    vertical-align: inherit;
+  }
+}

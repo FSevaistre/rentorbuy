@@ -1,0 +1,41 @@
+@import '../../../core.scss';
+
+@include variants('border-bottom-color', 'normal', 'editable-input', 'editable-input--field--currency');
+@include variants('border-bottom-color', 'normal', 'editable-input', 'editable-input--field--icon');
+@include variants('color', 'normal', 'editable-input', 'editable-input--field--icon:hover');
+
+%suffix {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid;
+}
+
+.editable-input {
+  &--field {
+    display: flex;
+
+    &--numberfield {
+      flex-grow: 1;
+
+      .numberfield--input {
+        padding-right: $g1;
+
+        input {
+          @include sub-heading();
+          text-align: right;
+        }
+      }
+    }
+
+    &--currency {
+      @extend %suffix;
+      padding-right: $g2;
+    }
+
+    &--icon {
+      @extend %suffix;
+      cursor: pointer;
+      color: $neutral-1-30;
+    }
+  }
+}

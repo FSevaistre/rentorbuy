@@ -1,0 +1,9 @@
+@import '../../../core.scss';
+
+.icon {
+  @include variants('color', 'normal');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 150ms linear;
+}

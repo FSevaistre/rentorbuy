@@ -1,0 +1,63 @@
+@import '../../../core.scss';
+
+.contact-form {
+  z-index: 1;
+
+  &--field {
+    margin-bottom: $g3;
+
+    &:first-child {
+      margin-top: $g2;
+      @media screen and (min-width: $tablet-min) {
+        margin-top: $g1;
+      }
+    }
+
+    &:last-of-type {
+      margin-bottom: $g2;
+    }
+
+    label {
+      margin-bottom: $g1;
+    }
+
+    &--name {
+      display: flex;
+
+      &--first,
+      &--last {
+        flex-grow: 1;
+      }
+
+      &--first {
+        margin-right: $g2;
+      }
+    }
+  }
+
+  &--cgu {
+    margin: $g3 0 $g1;
+    line-height: 1;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &--email-hint {
+    margin-top: $g1;
+    text-align: center;
+
+    &--correct {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  &--button {
+    &--sponsorship {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

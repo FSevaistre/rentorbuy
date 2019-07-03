@@ -1,0 +1,27 @@
+@import '../../../core.scss';
+
+.information-row {
+  &--loan {
+    margin-right: $g3;
+  }
+
+  &--label {
+    cursor: pointer;
+  }
+
+  &--value {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    &--result {
+      cursor: pointer;
+    }
+
+    &--icon {
+      margin-left: $g2;
+      cursor: pointer;
+      width: $g2;
+    }
+  }
+}

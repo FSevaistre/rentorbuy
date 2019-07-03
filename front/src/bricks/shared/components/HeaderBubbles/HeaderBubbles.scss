@@ -1,0 +1,11 @@
+@import '../../../core.scss';
+
+.header-bubbles {
+  &--item {
+    margin-bottom: $g1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

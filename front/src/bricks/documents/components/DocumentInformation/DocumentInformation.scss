@@ -1,0 +1,17 @@
+@import '../../../core.scss';
+
+.document-information {
+  &--title {
+    margin-bottom: $g1;
+  }
+
+  &--accepted,
+  &--explanation {
+    margin-bottom: $g3;
+  }
+
+  &--tag {
+    margin-top: $g3;
+    margin-bottom: $g2;
+  }
+}

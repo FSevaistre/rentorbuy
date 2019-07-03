@@ -1,0 +1,29 @@
+@import '../../../core.scss';
+
+.action-cards {
+  margin-top: -$g2;
+  padding-top: $g2;
+  overflow: hidden;
+
+  @media screen and (min-width: $tablet-min) {
+    display: flex;
+    justify-content: center;
+    padding: $g3;
+  }
+
+  &--card {
+    display: flex;
+    flex-grow: 1;
+
+    @media screen and (min-width: $tablet-min) {
+      max-width: calc(33.33% - #{$g2});
+    }
+
+    &:not(:last-child) {
+      margin-right: $g2;
+      @media screen and (min-width: $tablet-min) {
+        margin-right: $g3;
+      }
+    }
+  }
+}

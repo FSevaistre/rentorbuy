@@ -1,0 +1,64 @@
+@import '../../../core.scss';
+
+.inline-input--date-native {
+  width: 150px;
+}
+
+.inline-input--date-plugin {
+  width: 110px;
+}
+
+.datepicker {
+  @include input;
+  min-width: auto;
+
+  input {
+    width: 100px;
+    text-align: center;
+  }
+
+  &:focus-within {
+    @extend %focused-index;
+  }
+}
+
+.datepicker--mobile {
+  @include input;
+  position: relative;
+  border-bottom: 2px dashed $primary-1;
+  border-radius: 0;
+
+  input {
+    border: 0;
+    background-color: inherit;
+    padding: 0;
+    height: $g3;
+    white-space: nowrap;
+    color: $neutral-1-30;
+    font-size: $g2;
+    font-weight: 400;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &-is-valid {
+    border-style: solid;
+
+    input {
+      color: $primary-1;
+      font-weight: 600;
+    }
+  }
+}
+
+.react-datepicker-popper {
+  width: 250px;
+}
+
+// sass-lint:disable class-name-format
+.react-datepicker__day--outside-month {
+  opacity: 0.5;
+}
+// sass-lint:enable class-name-format

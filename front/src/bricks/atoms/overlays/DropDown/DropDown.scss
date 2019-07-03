@@ -1,0 +1,54 @@
+@import '../../../core.scss';
+
+@media only screen and (min-width: $tablet-min) {
+  @include dropdown('dropdown--transition');
+}
+
+.dropdown {
+  @include variants('background-color', 'normal');
+  @include variants('color', 'opposite');
+  position: relative;
+}
+
+.dropdown--container {
+  @include box-shadow;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  border-radius: $g1;
+  overflow: hidden;
+}
+
+.dropdown--label {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: $tablet-min) {
+  @include slide('dropdown--transition', 'right');
+  @include show('dropdown--transition--overlay');
+
+  .dropdown--container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: initial;
+    z-index: 100;
+    border-radius: 0;
+    width: 75%;
+    height: 100%;
+  }
+
+  .dropdown--overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background: $neutral-1-60;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+}

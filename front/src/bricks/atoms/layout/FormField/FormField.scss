@@ -1,0 +1,9 @@
+@import '../../../core.scss';
+
+.form-field {
+  @extend %field;
+
+  &--label {
+    @extend %label;
+  }
+}

@@ -1,0 +1,28 @@
+// GRID
+$g1: 8px;
+$g2: 2 * $g1;
+$g3: 3 * $g1;
+$g4: 4 * $g1;
+$g5: 5 * $g1;
+$g6: 6 * $g1;
+$g7: 7 * $g1;
+$g8: 8 * $g1;
+$g9: 9 * $g1;
+$g10: 10 * $g1;
+
+// LAYOUT
+$xsmall: $g1;
+$small: $g2;
+$medium: $g3;
+$large: $g4;
+$xlarge: $g5;
+$xxlarge: $g6;
+
+// RESPONSIVE
+$mobile-min: 320px;
+$mobile-large: 450px;
+$mobile: 600px;
+$tablet-min: 720px;
+$tablet-max: 840px;
+$desktop-min: 1024px;
+$desktop: 1240px;

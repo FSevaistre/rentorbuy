@@ -1,0 +1,36 @@
+@import '../../../core.scss';
+
+.subscribe-content {
+  &--section {
+    margin-bottom: $g5;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--title {
+      margin-bottom: $g1;
+    }
+
+    &--rate {
+      display: flex;
+      flex-wrap: wrap;
+
+      &--stars {
+        margin-right: $g2;
+        margin-bottom: $g1;
+        @media screen and (min-width: $tablet-min) {
+          margin-right: $g3;
+        }
+      }
+
+      &--trustpilot {
+        flex-basis: 100%;
+
+        span {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

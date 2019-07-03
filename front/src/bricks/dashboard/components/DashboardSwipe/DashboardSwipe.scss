@@ -1,0 +1,22 @@
+@import '../../../core.scss';
+
+.dashboard-swipe {
+  @media screen and (min-width: $tablet-min) {
+    max-width: 360px;
+    overflow: hidden;
+  }
+
+  &--article {
+    display: flex;
+    flex-grow: 1;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    a:hover {
+      color: $primary-1;
+    }
+  }
+}

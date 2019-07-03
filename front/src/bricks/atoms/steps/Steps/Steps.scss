@@ -1,0 +1,361 @@
+@import '../../../core.scss';
+
+@include scale-transition('step-check--transition');
+
+@include variants('border-color', 'normal', 'steps', 'step--current .step--badge'); // current badge variant
+@include variants('border-color', 'normal', 'steps', 'step--before .step--badge'); // before badge variant
+@include variants('background-color', 'normal', 'steps', 'step--link'); // link active variant
+@include variants('border-color', 'normal', 'steps', 'step--current .step--badge:before'); // twinkle1 variant
+@include variants('border-color', 'normal', 'steps', 'step--current .step--badge:after'); // twinkle2 variant
+@include variants('background-color', 'normal', 'steps', 'step--badge:before');
+@include variants('background-color', 'normal', 'steps', 'step--current .step--badge:after');
+
+@include variants('background-color', 'normal', 'steps--container', 'step--badge');
+
+%step-link {
+  position: absolute;
+  top: $g3;
+  left: $g4 + 2;
+  z-index: 1;
+  background-color: $neutral-1-20;
+  width: 4px;
+  height: 100%;
+  content: '';
+  @media screen and (min-width: $tablet-min) {
+    top: $g3;
+    left: $g5 - 2;
+  }
+}
+
+%shine {
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    animation: shine 2s linear infinite;
+    border-radius: 50%;
+    content: '';
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.steps {
+  position: relative;
+
+  &--vertical {
+    @include height('step-link--transition', 100%, 500ms);
+  }
+}
+
+.step {
+  @include variants('background-color', 'normal');
+  position: relative;
+  transition: background-color 500ms linear;
+
+  &:not(:last-child) .step--wrapper {
+    &:before {
+      @extend %step-link;
+      background-color: $white;
+    }
+
+    &:after {
+      @extend %step-link;
+      background-color: $neutral-1-20;
+    }
+  }
+
+  &--badge {
+    display: inline-flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translate(0);
+    transition: width 500ms linear, height 500ms linear, transform 500ms linear, margin 500ms linear;
+    z-index: 3;
+    margin-top: -$g1;
+    border-radius: 50%;
+    background-color: $white;
+    width: $g5;
+    height: $g5;
+    vertical-align: top;
+    color: $white;
+
+    @media screen and (min-width: $tablet-min) {
+      margin-top: 0;
+    }
+
+    &:before {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      bottom: 4px;
+      left: 4px;
+      transition: border-color 500ms linear 500ms;
+      z-index: 1;
+      border-radius: 50%;
+      content: '';
+    }
+
+    &--check {
+      display: flex;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      border-radius: 50%;
+    }
+  }
+
+  &--link {
+    @extend %step-link;
+    z-index: 2;
+  }
+
+  &--wrapper {
+    position: relative;
+    padding: $g2;
+    @media screen and (min-width: $tablet-min) {
+      padding: $g3;
+    }
+  }
+
+  &--content {
+    display: inline-block;
+    padding-left: $g7;
+    @media screen and (min-width: $tablet-min) {
+      padding-left: 0;
+    }
+  }
+
+  &--current {
+    .step--content {
+      opacity: 1;
+    }
+
+    .step--badge {
+      @extend %shine;
+      color: transparent;
+      transition-delay: 500ms, 500ms, 0, 0;
+    }
+
+    &.step--last .step--badge--check {
+      color: $white;
+    }
+  }
+
+  &--after {
+    .step--badge {
+      transform: translate($g1, $g1);
+      margin-right: $g5;
+      width: $g3;
+      height: $g3;
+      color: transparent;
+
+      &:before {
+        background: $neutral-1-20;
+      }
+    }
+  }
+}
+
+.steps--container {
+  @include variants('background-color', 'normal');
+
+  &--horizontal {
+    display: flex;
+    align-items: center;
+    padding: $g2;
+    width: 100%;
+    overflow: auto;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      height: 12px;
+
+      &-track {
+        background: linear-gradient(to top, $neutral-1-20 0, $neutral-1-20 100%),
+          linear-gradient(to top, $white 0, $white 100%);
+      }
+
+      &-thumb {
+        border-radius: $g1;
+        background: linear-gradient(to top, $neutral-1-40 0, $neutral-1-40 100%),
+          linear-gradient(to top, $white 0, $white 100%);
+
+        &:hover,
+        &:active {
+          background: $primary-1;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &--not-detailed {
+    margin: 0 auto;
+    max-width: $desktop;
+
+    .steps--horizontal {
+      justify-content: space-between;
+
+      .step {
+        flex: 1 1 auto;
+        cursor: pointer;
+
+        &--last {
+          flex: 0 0 auto;
+        }
+
+        &--current {
+          .step {
+            &--content {
+              position: absolute;
+              top: $g10;
+              margin: 0;
+              width: 324px;
+              max-width: 324px;
+            }
+
+            &--badge {
+              margin-bottom: $g8;
+
+              &:after {
+                top: $g4;
+                left: $g1 + 6;
+                animation: none;
+                border-radius: 0;
+                width: 1px;
+                height: $g6;
+              }
+            }
+          }
+        }
+
+        &--before,
+        &--current,
+        &--after {
+          .step {
+            &--badge {
+              transform: initial;
+              margin-top: 0;
+              width: $g4 - 4;
+              height: $g4 - 4;
+            }
+
+            &--link {
+              top: $g1 + 4;
+              left: $g3 + 4;
+            }
+          }
+
+          &:not(:last-child) .step--wrapper {
+            &:before,
+            &:after {
+              top: $g1 + 4;
+              left: $g3 + 4;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Direction: Horizontal
+@media screen and (min-width: $tablet-min) {
+  %step-link-horizontal {
+    top: $g6 / 2 - 2;
+    width: 100%;
+    height: 4px;
+  }
+
+  %shine-horizontal {
+    &:after {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-width: $g1;
+    }
+  }
+
+  .steps--horizontal {
+    @include width('step-link--transition', 100%, 800ms);
+    display: flex;
+
+    .step {
+      flex: 0 0 33.33%;
+      transition: right 500ms ease-in-out 300ms;
+      max-width: 340px;
+
+      &:not(:last-child) .step--wrapper {
+        &:before,
+        &:after {
+          @extend %step-link-horizontal;
+        }
+      }
+
+      &--link {
+        @extend %step-link-horizontal;
+      }
+
+      &--wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+      }
+
+      &--content {
+        margin: $g8 ($g6 / 2) 0;
+      }
+
+      &--current {
+        .step--badge {
+          @extend %shine-horizontal;
+        }
+      }
+
+      &--after {
+        .step--badge {
+          transform: translateX($g1);
+          margin-top: $g1;
+          margin-bottom: $g4;
+          width: $g4;
+          height: $g4;
+        }
+      }
+
+      &--badge {
+        margin-right: 0;
+        margin-bottom: $g2;
+        width: $g6;
+        height: $g6;
+
+        &--check {
+          font-size: $g2;
+        }
+      }
+    }
+  }
+}

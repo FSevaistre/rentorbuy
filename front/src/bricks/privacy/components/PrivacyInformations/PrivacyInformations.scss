@@ -1,0 +1,43 @@
+@import '../../../core.scss';
+
+.privacy-informations {
+  &--disclaimer {
+    margin-bottom: $g5;
+
+    p {
+      margin-bottom: $g3;
+    }
+  }
+
+  &--reasons {
+    @media screen and (min-width: $mobile) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &--item {
+      margin-bottom: $g3;
+      @media screen and (min-width: $mobile) {
+        flex: 0 0 50%;
+        margin-bottom: $g5;
+        padding-right: $g2;
+
+        &:nth-child(even) {
+          padding-right: 0;
+          padding-left: $g2;
+        }
+      }
+    }
+  }
+
+  &--links {
+    margin-bottom: $g3;
+    @media screen and (min-width: $mobile) {
+      margin-bottom: $g5;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}

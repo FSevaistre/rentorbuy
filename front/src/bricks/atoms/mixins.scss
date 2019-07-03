@@ -1,0 +1,233 @@
+@import './colors.scss';
+@import './layout.scss';
+@import './fonts.scss';
+
+// Define the different variants. $style can be a custom color for specific cases.
+@mixin variants($prop, $style, $parent-class: '', $class: '') {
+  @each $variant, $normal, $light, $dark, $opposite in (white, $white, rgba($white, 0.2), $neutral-1, $neutral-1),
+    (facebook, $facebook, $facebook, $facebook, $white), (twitter, $twitter, $twitter, $twitter, $white),
+    (whatsapp, $whatsapp, $whatsapp, $whatsapp, $white), (primary-1, $primary-1, $primary-1-l, $primary-1-d, $white),
+    (primary-1-l, $primary-1-l, $white, $primary-1, $neutral-1),
+    (primary-1-d, $primary-1-d, $white, darken($primary-1-d, 10%), $white),
+    (primary-1-20, $primary-1-20, $white, $primary-1, $primary-1),
+    (primary-1-30, $primary-1-30, $white, $primary-1, $primary-1),
+    (primary-1-40, $primary-1-40, $white, $primary-1, $primary-1),
+    (primary-1-60, $primary-1-60, $white, $primary-1, $primary-1),
+    (primary-1-80, $primary-1-80, $white, $primary-1, $white),
+    (primary-2, $primary-2, $primary-2-l, $primary-2-d, $white),
+    (primary-2-l, $primary-2-l, $white, $primary-2, $neutral-1),
+    (primary-2-d, $primary-2-d, $white, darken($primary-2-d, 10%), $white),
+    (neutral-1, $neutral-1, $neutral-1-l, $neutral-1-d, $white),
+    (neutral-1-l, $neutral-1-l, $white, $neutral-1-20, $neutral-1),
+    (neutral-1-d, $neutral-1-d, $white, darken($neutral-1-d, 10%), $white),
+    (neutral-1-20, $neutral-1-20, $white, $neutral-1, $neutral-1),
+    (neutral-1-30, $neutral-1-30, $white, $neutral-1, $neutral-1),
+    (neutral-1-40, $neutral-1-40, $white, $neutral-1, $neutral-1),
+    (neutral-1-60, $neutral-1-60, $white, $neutral-1, $neutral-1),
+    (neutral-1-80, $neutral-1-80, $white, $neutral-1, $white), (accent-1, $accent-1, $accent-1-l, $accent-1-d, $white),
+    (accent-2, $accent-2, $accent-2-l, $accent-2-d, $neutral-1),
+    (accent-3, $accent-3, $accent-3-l, $accent-3-d, $neutral-1), (accent-4, $accent-4, $accent-4-l, $accent-4-d, $white),
+    (accent-4-20, $accent-4-20, $white, $accent-4, $accent-4), (accent-4-30, $accent-4-30, $white, $accent-4, $accent-4),
+    (accent-4-40, $accent-4-40, $white, $accent-4, $accent-4), (accent-4-60, $accent-4-60, $white, $accent-4, $accent-4),
+    (accent-4-80, $accent-4-80, $white, $accent-4, $white), (accent-5, $accent-5, $accent-5-l, $accent-5-d, $white),
+    (accent-1-l, $accent-1-l, $white, $accent-1, $accent-1), (accent-2-l, $accent-2-l, $white, $accent-2, $neutral-1),
+    (accent-3-l, $accent-3-l, $white, $accent-3, $neutral-1), (accent-4-l, $accent-4-l, $white, $accent-4, $neutral-1),
+    (accent-5-l, $accent-5-l, $white, $accent-5, $neutral-1),
+    (accent-1-d, $accent-1-d, $white, darken($accent-1-d, 10%), $white),
+    (accent-2-d, $accent-2-d, $white, darken($accent-2-d, 10%), $white),
+    (accent-3-d, $accent-3-d, $white, darken($accent-3-d, 10%), $white),
+    (accent-4-d, $accent-4-d, $white, darken($accent-4-d, 10%), $white),
+    (accent-5-d, $accent-5-d, $white, darken($accent-5-d, 10%), $white),
+    (success, $success, $success-l, $success-d, $white), (success-l, $success-l, $white, $success, $neutral-1),
+    (success-d, $success-d, $white, darken($success-d, 10%), $white),
+    (warning, $warning, $warning-l, $warning-d, $white),
+    (warning-d, $warning-d, $white, darken($warning-d, 10%), $white),
+    (warning-l, $warning-l, $white, $warning, $neutral-1), (error, $error, $error-l, $error-d, $white),
+    (error-d, $error-d, $white, darken($error-d, 10%), $white), (error-l, $error-l, $white, $error, $neutral-1),
+    (inherit, inherit, inherit, inherit, inherit)
+  {
+    $color: $style;
+    @if $style == 'normal' {
+      $color: $normal;
+    }
+    @if $style == 'light' {
+      $color: $light;
+    }
+    @if $style == 'dark' {
+      $color: $dark;
+    }
+    @if $style == 'opposite' {
+      $color: $opposite;
+    }
+    @if $parent-class != '' and $class != '' {
+      .#{$parent-class}--#{$variant} .#{$class} {
+        #{$prop}: $color;
+      }
+    }
+    @elseif $class != '' {
+      &--#{$variant} .#{$class} {
+        #{$prop}: $color;
+      }
+    } @else {
+      &--#{$variant} {
+        #{$prop}: $color;
+      }
+    }
+  }
+}
+
+// FORM ----------
+%section-title {
+  @include sub-heading('large');
+  margin-bottom: $g4;
+  @media screen and (min-width: $tablet-min) {
+    margin-bottom: $g6;
+  }
+}
+
+%form-section {
+  margin-bottom: $g4;
+  @media screen and (min-width: $tablet-min) {
+    margin-bottom: $g6;
+  }
+}
+
+%label {
+  display: block;
+  margin-bottom: $g2;
+}
+
+%field {
+  margin-bottom: $g3;
+  @media screen and (min-width: $tablet-min) {
+    margin-bottom: $g4;
+  }
+
+  &:last-child {
+    margin-bottom: $g4;
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g6;
+    }
+  }
+}
+
+%form-divider {
+  margin-bottom: $g4;
+  @media screen and (min-width: $tablet-min) {
+    margin-bottom: $g6;
+  }
+}
+
+// INPUTS
+%focused-index {
+  outline: 1px dashed $primary-1;
+}
+
+@mixin gradients() {
+  @each $variant, $gradient in (gradient-primary-1, $gradient-primary-1), (gradient-primary-2, $gradient-primary-2),
+    (gradient-primary-3, $gradient-primary-3)
+  {
+    &--#{$variant} {
+      background: $gradient;
+    }
+  }
+}
+
+@mixin placeholder {
+  &::placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin overlay {
+  background-color: $neutral-1-80;
+}
+
+@mixin input {
+  display: inline;
+  position: relative;
+  border-bottom: 2px dashed $primary-1;
+  border-radius: 0;
+  padding: 4px $g1 7px;
+  min-width: $g1;
+  font-weight: 600;
+  @media screen and (min-width: $tablet-min) {
+    display: inline-block;
+    padding: 0 $g1;
+    height: $g4;
+    line-height: $g4;
+  }
+
+  input {
+    border: 0;
+    padding: 0;
+    text-align: center;
+    color: $primary-1;
+    font-family: inherit;
+    font-size: $g2;
+    font-weight: 600;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include placeholder {
+      color: $neutral-1-30;
+      font-weight: 400;
+    }
+  }
+
+  &-is-valid {
+    border-style: solid;
+  }
+}
+
+@mixin box-shadow($z-depth: 1) {
+  @if $z-depth == 0 {
+    box-shadow: none;
+  }
+
+  @if $z-depth == 1 {
+    box-shadow: 0 2px 10px 0 $neutral-1-20;
+  }
+
+  @if $z-depth == 2 {
+    box-shadow: 0 4px 20px 0 rgba($neutral-1, 0.15);
+  }
+
+  @if $z-depth == 3 {
+    box-shadow: 0 6px 30px 0 rgba($neutral-1, 0.15);
+  }
+}
+
+@mixin background($bg, $top: 0, $bottom: 0) {
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    position: absolute;
+    top: $top;
+    bottom: $bottom;
+    left: calc(50% - 50vw);
+    z-index: -1;
+    background: $bg;
+    width: 100vw;
+    content: '';
+  }
+}

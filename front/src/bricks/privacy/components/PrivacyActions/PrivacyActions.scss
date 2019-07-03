@@ -1,0 +1,12 @@
+@import '../../../core.scss';
+
+.privacy-action {
+  &--buttons {
+    display: flex;
+    justify-content: flex-end;
+
+    &--cancel {
+      margin-right: $g1;
+    }
+  }
+}

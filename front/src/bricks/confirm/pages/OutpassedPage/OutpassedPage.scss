@@ -1,0 +1,74 @@
+@import '../../../core.scss';
+
+.outpassed-page {
+  margin: $g2;
+  max-width: $mobile;
+
+  @media screen and (min-width: $mobile) {
+    margin: $g2 auto;
+  }
+
+  @media screen and (min-width: $tablet-min) {
+    margin: 20vh auto 0;
+    padding-left: $g7 + $g3;
+    max-width: $tablet-min;
+  }
+
+  @media screen and (min-width: $tablet-max) {
+    max-width: $tablet-max;
+  }
+
+  &--title {
+    @include heading('large');
+
+    display: flex;
+    align-items: center;
+    margin-bottom: $g3;
+
+    @media screen and (min-width: $tablet-min) {
+      margin-left: -($g7 + $g3);
+    }
+
+    &--emoji {
+      margin-right: $g3;
+    }
+  }
+
+  &--reload {
+    margin-bottom: $g3;
+
+    &--text {
+      margin-bottom: $g2;
+    }
+
+    &--button {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &--questions {
+    position: relative;
+    padding-left: $g4;
+
+    &--icon {
+      display: flex;
+      position: absolute;
+      top: 0;
+      left: 0;
+      align-items: center;
+      height: $g3;
+    }
+
+    &--title {
+      @include sub-heading;
+      font-weight: bold;
+    }
+
+    &--chat {
+      cursor: pointer;
+      text-decoration: underline;
+      color: $primary-1;
+    }
+  }
+}

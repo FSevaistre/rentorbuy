@@ -1,0 +1,8 @@
+@import '../../../core.scss';
+
+.onboarding-maturity {
+  @media screen and (min-width: $tablet-min) {
+    margin-bottom: $g3;
+    max-width: $mobile-large;
+  }
+}

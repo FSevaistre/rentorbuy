@@ -1,0 +1,46 @@
+@import '../../../core.scss';
+
+.choice-category {
+  display: flex;
+  position: relative;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  transition: right 250ms ease-in-out;
+  height: 100%;
+  text-align: left;
+
+  &--wrapper {
+    @media screen and (min-width: $tablet-min) {
+      margin: auto;
+      max-width: $g10 * 4 + $g5;
+    }
+  }
+
+  &--content {
+    @media screen and (min-width: $tablet-min) {
+      height: $g9 * 2;
+    }
+  }
+
+  &--picture {
+    display: block;
+    margin: 0 auto $g3;
+    max-width: calc(100% - #{$g9 * 2});
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g6;
+      max-width: $g10 * 4;
+    }
+  }
+
+  &--title {
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+    margin-bottom: $g2;
+
+    &--action {
+      margin: $g1 / 2 0 0 $g1;
+    }
+  }
+}

@@ -1,0 +1,166 @@
+@import '../../../core.scss';
+// transition type dropdown
+@media only screen and (min-width: $tablet-min) {
+  @include dropdown('selectfield--dropdown-transition');
+}
+
+.selectfield {
+  @include input;
+  @include variants('border-color', normal);
+  @media screen and (min-width: $tablet-min) {
+    display: inline-block;
+    position: relative;
+  }
+  color: $primary-1;
+
+  &:focus {
+    @extend %focused-index;
+  }
+}
+
+.selectfield--item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &--is-selected {
+    color: $primary-1;
+
+    &.selectfield--item {
+      @include variants('color', normal);
+    }
+  }
+
+  &--empty-space {
+    width: $g4;
+  }
+}
+
+.selectfield--label {
+  display: inline;
+  position: relative;
+  align-items: baseline;
+  background-repeat: no-repeat;
+  background-position: 100% center;
+  cursor: pointer;
+  color: $primary-1;
+  font-weight: 600;
+  @media screen and (min-width: $tablet-min) {
+    display: inline-block;
+  }
+
+  &--text {
+    @include variants('color', normal);
+    margin-right: $g2;
+  }
+
+  &--icon {
+    color: $primary-1;
+    font-size: $g1;
+
+    .icon {
+      display: inline;
+    }
+  }
+}
+
+.selectfield--placeholder {
+  color: $neutral-1-30;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: $tablet-min) {
+  @include show('selectfield--dropdown-transition', 300ms);
+
+  .list-overlay {
+    @include overlay;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 9999;
+    padding: $g2;
+    width: 100%;
+    height: 100%;
+    font-weight: 600;
+  }
+}
+
+// FORMAT
+
+// form
+.selectfield--form {
+  display: block;
+  border-style: solid;
+  height: $g6;
+  line-height: $g6;
+
+  .selectfield--label {
+    display: flex;
+    font-weight: initial;
+
+    &:not(.selectfield--placeholder) {
+      color: $neutral-1;
+    }
+
+    &--text {
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .list--selectfield--dropdown {
+    top: $g6;
+  }
+}
+
+// filter
+.selectfield--filter {
+  display: inline-block;
+  border: 1px solid $neutral-1-20;
+  border-radius: $g1 / 2;
+  padding: 0 $g2 0 0;
+  width: 100%;
+  height: $g5;
+  line-height: $g5;
+  font-size: 14px;
+
+  .selectfield--label {
+    display: flex;
+    justify-content: space-between;
+    height: $g5 - 2;
+    line-height: $g5 - 2;
+    color: $neutral-1-40;
+    font-weight: initial;
+
+    &--text {
+      display: flex;
+      color: $neutral-1;
+
+      &--filter {
+        margin-right: $g2;
+        border-radius: $g1 / 2 0 0 $g1 / 2;
+        background: $neutral-1-l;
+        padding: 0 $g2;
+        text-transform: uppercase;
+      }
+    }
+
+    &--icon {
+      color: $neutral-1-40;
+    }
+  }
+
+  .selectfield--item {
+    font-size: $g2;
+
+    span::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

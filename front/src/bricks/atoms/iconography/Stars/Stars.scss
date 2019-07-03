@@ -1,0 +1,27 @@
+@import '../../../core.scss';
+
+.stars {
+  display: flex;
+  flex-wrap: wrap;
+  @each $size, $value, $font-size in (small, $g2), (medium, $g3), (large, $g4) {
+    &--#{$size} .star {
+      width: $value;
+      height: $value;
+      font-size: $value / 2;
+    }
+  }
+}
+
+.star {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+  border-radius: 4px;
+  background: linear-gradient(344.99deg, #2cb3b7 0%, rgba($neutral-1, 0) 100%) $primary-1;
+  color: $white;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

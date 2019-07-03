@@ -1,0 +1,45 @@
+@import '../../../core.scss';
+
+.dashboard-budget-details {
+  display: flex;
+  margin-right: -$g2;
+  margin-left: -$g2;
+  padding-left: $g2;
+  overflow: auto;
+  white-space: nowrap;
+  @media screen and (min-width: $desktop-min) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    white-space: initial;
+  }
+
+  &--card {
+    margin-right: $g1;
+    @media screen and (min-width: $desktop-min) {
+      flex-grow: 1;
+      max-width: $g10 * 2;
+    }
+
+    &:last-child {
+      margin-right: 0;
+      padding-right: $g2;
+      @media screen and (min-width: $desktop-min) {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &--placeholder {
+    &--title {
+      margin-bottom: $g1 + 2;
+      width: $g9;
+    }
+
+    &--content {
+      width: $g10;
+      height: $g3;
+    }
+  }
+}

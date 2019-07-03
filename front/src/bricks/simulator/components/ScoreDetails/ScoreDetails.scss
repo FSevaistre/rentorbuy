@@ -1,0 +1,17 @@
+@import '../../../core.scss';
+
+.score-details {
+  &--infos {
+    margin-bottom: $g4;
+  }
+
+  &--section {
+    &:not(:last-child) {
+      margin-bottom: $g4;
+    }
+
+    &--description {
+      margin-top: $g1;
+    }
+  }
+}

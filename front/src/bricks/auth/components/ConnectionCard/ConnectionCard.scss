@@ -1,0 +1,28 @@
+@import '../../../core.scss';
+
+.connection-card {
+  &--safety {
+    display: flex;
+
+    &--emoji {
+      margin-right: $g2;
+      @media screen and (min-width: $tablet-min) {
+        margin-right: $g3;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+
+      &:focus,
+      &:hover {
+        outline: 0px transparent;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &--input {
+    margin-bottom: $g2;
+  }
+}

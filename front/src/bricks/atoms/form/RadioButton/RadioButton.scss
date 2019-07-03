@@ -1,0 +1,236 @@
+@import '../../../core.scss';
+
+$radiosize: $g3;
+
+.radio {
+  @include variants('color', 'normal');
+  height: $g6;
+  line-height: $g6;
+}
+
+.radio--content > *:first-child {
+  margin-right: $g2;
+}
+
+.radio--button {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  width: $radiosize;
+  height: $radiosize;
+  vertical-align: middle;
+
+  input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    z-index: 10;
+    margin: 0;
+    margin-top: -$radiosize/2;
+    margin-left: -$radiosize/2;
+    cursor: pointer;
+    width: $radiosize;
+    height: $radiosize;
+  }
+
+  // background check icon
+  &:after {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 9;
+    border-radius: 50%;
+    background-color: #fff;
+    width: $radiosize - 4;
+    height: $radiosize - 4;
+    content: '';
+  }
+
+  // check icon
+  .circle-container:before {
+    @include scale(0);
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    font-size: 10px;
+  }
+}
+
+.radio--checked .circle-container:before {
+  @include scale(1);
+}
+
+.radio--label {
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+// Formats
+.radio--inline {
+  display: inline-block;
+  margin-right: $g3;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+// Animation fill circle
+.radio--checked .circle-container .circle-loader-wrap .left-wrap .loader {
+  animation: loading-left 0.5s linear forwards;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  transform-origin: 0 50% 0;
+  -webkit-transform-origin: 0 50% 0;
+  -webkit-animation: loading-left 0.5s linear forwards;
+}
+
+.radio--checked .circle-container .circle-loader-wrap .right-wrap .loader {
+  left: -100%;
+  animation: loading-right 0.5s linear forwards;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  transform-origin: 100% 50% 0;
+  -webkit-transform-origin: 100% 50% 0;
+  -webkit-animation: loading-right 0.5s linear forwards;
+}
+
+.circle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $radiosize;
+  height: $radiosize;
+
+  .circle-loader-wrap {
+    position: relative;
+    transform: rotate(180deg);
+    border-radius: $radiosize;
+    background-color: $neutral-1-20;
+    width: $radiosize;
+    height: $radiosize;
+    overflow: hidden;
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+
+    div {
+      position: absolute;
+      animation: visibility 1s;
+      animation-delay: 1s;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .loader {
+      @include variants('background-color', 'normal');
+      position: absolute;
+      top: 0;
+      left: 100%;
+      border-radius: $radiosize;
+      width: 100%;
+      height: 100%;
+    }
+
+    .left-wrap {
+      left: 0;
+    }
+
+    .right-wrap {
+      left: 50%;
+      @keyframes loading-left {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        25% {
+          transform: rotate(180deg);
+        }
+
+        50% {
+          transform: rotate(180deg);
+        }
+
+        75% {
+          transform: rotate(180deg);
+        }
+
+        100% {
+          transform: rotate(180deg);
+        }
+      }
+      @-webkit-keyframes loading-left {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+
+        25% {
+          -webkit-transform: rotate(180deg);
+        }
+
+        50% {
+          -webkit-transform: rotate(180deg);
+        }
+
+        75% {
+          -webkit-transform: rotate(180deg);
+        }
+
+        100% {
+          -webkit-transform: rotate(180deg);
+        }
+      }
+      @keyframes loading-right {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        25% {
+          transform: rotate(0deg);
+        }
+
+        50% {
+          transform: rotate(180deg);
+        }
+
+        75% {
+          transform: rotate(180deg);
+        }
+
+        100% {
+          transform: rotate(180deg);
+        }
+      }
+
+      @-webkit-keyframes loading-right {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+
+        25% {
+          -webkit-transform: rotate(0deg);
+        }
+
+        50% {
+          -webkit-transform: rotate(180deg);
+        }
+
+        75% {
+          -webkit-transform: rotate(180deg);
+        }
+
+        100% {
+          -webkit-transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

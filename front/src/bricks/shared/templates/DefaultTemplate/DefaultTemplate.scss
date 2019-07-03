@@ -1,0 +1,18 @@
+@import '../../../core.scss';
+
+.template--default {
+  background: $neutral-1-l;
+
+  &--heading {
+    padding-top: $g4;
+  }
+
+  &--description {
+    margin-bottom: $g2;
+    padding: $g1 $g2;
+    text-align: center;
+    @media screen and (min-width: $tablet-min) {
+      padding: $g4 $g3;
+    }
+  }
+}

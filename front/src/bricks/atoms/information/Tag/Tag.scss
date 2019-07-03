@@ -1,0 +1,37 @@
+@import '../../../core.scss';
+
+.tag {
+  @include variants('background-color', 'normal');
+  @include variants('color', 'opposite');
+  display: inline-block;
+  padding: 0 $g2;
+  line-height: inherit;
+  white-space: nowrap;
+  font-size: inherit;
+
+  &--x-small {
+    border-radius: $g2 - 4;
+    line-height: $g2;
+    font-size: $g2 - 4;
+  }
+
+  &--small {
+    border-radius: $g2 - 2;
+    line-height: $g3;
+    font-size: $g2 - 2;
+  }
+
+  &--medium {
+    border-radius: $g2;
+    line-height: $g3;
+    font-size: $g2;
+  }
+
+  &--large {
+    border-radius: $g2;
+    padding: 0 $g2;
+    height: $g4;
+    line-height: $g4;
+    font-size: $g2;
+  }
+}

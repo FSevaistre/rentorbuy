@@ -1,0 +1,9 @@
+@import '../../../core.scss';
+
+.login-page {
+  margin: 0 auto;
+  max-width: $mobile;
+  @media screen and (min-width: $mobile) {
+    padding: 0 $g3;
+  }
+}

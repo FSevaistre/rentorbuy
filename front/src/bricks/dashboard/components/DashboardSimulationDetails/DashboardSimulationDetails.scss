@@ -1,0 +1,30 @@
+@import '../../../core.scss';
+
+.dashboard-simulation-details {
+  &--card {
+    margin-bottom: $g1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &--row {
+    margin-bottom: $g1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--placeholder {
+      &--label {
+        margin: ($g1 / 2) 0;
+        width: $g10 * 2;
+      }
+
+      &--value {
+        width: $g10;
+      }
+    }
+  }
+}

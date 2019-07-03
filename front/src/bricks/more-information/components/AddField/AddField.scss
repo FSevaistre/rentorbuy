@@ -1,0 +1,28 @@
+@import '../../../core.scss';
+
+.add-field {
+  transition: all 150ms ease-in;
+  margin: 0 (-$g2) (-$g1);
+  border: dashed $neutral-1-20;
+  border-width: 1px 0;
+  cursor: pointer;
+  @media screen and (min-width: $tablet-min) {
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    border-radius: $g1;
+  }
+
+  &:hover {
+    @include box-shadow(1);
+  }
+
+  &--content {
+    display: flex;
+    align-items: center;
+
+    &--button {
+      margin-right: $g2;
+    }
+  }
+}

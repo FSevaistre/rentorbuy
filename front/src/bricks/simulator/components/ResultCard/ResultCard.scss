@@ -1,0 +1,9 @@
+@import '../../../core.scss';
+@import './ResultCardBanks/ResultCardBanks.scss';
+@import './ResultCardSwipe/ResultCardSwipe.scss';
+@import './ResultCardA/ResultCardA.scss';
+@import './ResultCardB/ResultCardB.scss';
+
+.simulator--result-card {
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+@import '../../../core.scss';
+
+.onboarding-call {
+  max-width: $mobile-large;
+
+  &--card {
+    margin-bottom: $g2;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import '../../../core.scss';
+
+.sponsorship-share-options {
+  &--header {
+    background: $neutral-1-l;
+    padding: $g2 $g3;
+
+    &--title {
+      margin-bottom: $g1;
+    }
+  }
+
+  &--links {
+    display: flex;
+    align-items: flex-end;
+    padding: $g1 $g3 $g3;
+
+    &--link {
+      flex-grow: 1;
+      margin-right: $g3;
+      min-width: 0;
+    }
+  }
+}

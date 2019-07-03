@@ -1,0 +1,35 @@
+@import '../../../core.scss';
+
+.dots {
+  display: flex;
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--right {
+    justify-content: flex-end;
+  }
+
+  &--left {
+    justify-content: flex-start;
+  }
+}
+
+@include variants('background-color', 'normal', 'dots', 'dot--is-active');
+@include variants('border-color', 'normal', 'dots', 'dot');
+
+.dot {
+  opacity: 0.4;
+  margin: 0 ($g1 / 2);
+  border: 1px solid;
+  border-radius: $g1;
+  cursor: pointer;
+  width: $g1;
+  height: $g1;
+
+  &--is-active {
+    opacity: 1;
+    border: 0;
+  }
+}

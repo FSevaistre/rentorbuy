@@ -1,0 +1,105 @@
+@import '../../../core.scss';
+
+@include variants('background-color', 'normal', 'slide', 'rc-slider-track');
+@include variants('border-color', 'normal', 'slide', 'rc-slider-handle');
+@include variants('background-color', 'normal', 'slide', 'rc-slider-track:after');
+
+.slide--wrapper {
+  position: relative;
+  padding: 0 $g2;
+}
+
+%extension {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  width: $g2;
+  content: '';
+}
+
+.rc-slider-dot {
+  display: none;
+  visibility: hidden;
+}
+
+.rc-slider {
+  position: relative;
+  padding: 0;
+  height: $g4;
+
+  .rc-slider-mark {
+    display: none;
+  }
+
+  &.rc-slider-disabled {
+    .rc-slider-track {
+      &:after {
+        display: none;
+      }
+    }
+
+    .rc-slider-rail {
+      &:after {
+        display: none;
+      }
+    }
+
+    .rc-slider-track,
+    .rc-slider-rail,
+    .rc-slider-step {
+      border-radius: $g2;
+    }
+  }
+
+  .rc-slider-track,
+  .rc-slider-rail,
+  .rc-slider-step {
+    margin-top: $g3 / 2;
+    border-radius: 0;
+    height: $g1;
+  }
+
+  .rc-slider-track {
+    &:after {
+      @extend %extension;
+      right: 100%;
+      border-radius: $g2 0 0 $g2;
+    }
+  }
+
+  .rc-slider-rail {
+    background-color: $neutral-1-20;
+
+    &:after {
+      @extend %extension;
+      left: 100%;
+      border-radius: 0 $g2 $g2 0;
+      background-color: $neutral-1-20;
+    }
+  }
+
+  .rc-slider-handle {
+    top: 0;
+    margin-top: 0;
+    margin-left: -$g4/2;
+    border-width: 2px;
+    width: $g4;
+    height: $g4;
+
+    &:active {
+      @include box-shadow(1);
+    }
+  }
+}
+
+// isLocked: true
+.rc-slider-disabled {
+  background-color: transparent;
+}
+
+.slide.slide--disabled {
+  .rc-slider-handle {
+    display: none;
+  }
+}

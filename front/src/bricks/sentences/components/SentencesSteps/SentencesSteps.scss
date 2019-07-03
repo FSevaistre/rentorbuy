@@ -1,0 +1,21 @@
+@import '../../../core.scss';
+
+@include property-transition('sentences--steps--transition', opacity, 0, 1, 500ms);
+@include property-transition('sentences--steps--transition', transform, scale(0.9), scale(1), 500ms);
+
+@include property-transition('sentences--icon-cross--transition', opacity, 0, 1);
+@include property-transition('sentences--icon-cross--transition', transform, rotateZ(-90deg), rotateZ(0));
+
+@include property-transition('sentences--icon--transition', opacity, 0, 1);
+@include property-transition('sentences--icon--transition', transform, translateY(-8px), translateY(0));
+
+.sentences-steps {
+  transform-origin: 0 0;
+  @media screen and (min-width: $tablet-min) {
+    margin-top: $g4;
+  }
+
+  &--title {
+    cursor: pointer;
+  }
+}

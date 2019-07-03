@@ -1,0 +1,10 @@
+@import '../../../core.scss';
+
+.sponsorship-winnings {
+  display: flex;
+  justify-content: space-between;
+
+  &--amount {
+    margin-left: $g2;
+  }
+}

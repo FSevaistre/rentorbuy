@@ -1,0 +1,306 @@
+@import '../../../core.scss';
+
+.button {
+  @include current-text;
+
+  display: inline-block;
+  border: 2px solid transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: $g2;
+  font-weight: bold;
+
+  @include transition(background 300ms ease-in-out, box-shadow 300ms ease-in-out);
+  @include variants('background-color', 'normal');
+
+  @each $size, $value in (x-small, $g4), (small, $g5), (medium, $g6), (large, $g7) {
+    &--#{$size} {
+      border-radius: $value;
+      padding: 0 $value;
+      height: $value;
+      line-height: $value - 4;
+    }
+  }
+
+  &:hover.button {
+    @include box-shadow;
+    @include variants('background-color', 'dark');
+  }
+
+  &:focus {
+    @extend %focused-index;
+  }
+
+  @media screen and (max-width: $tablet-min) {
+    width: 100%;
+  }
+
+  /* DESCENDANTS */
+
+  &__icon {
+    &--left {
+      padding-right: $g2;
+    }
+
+    &--right {
+      padding-left: $g2;
+    }
+
+    &--small {
+      font-size: $g1;
+    }
+
+    &--medium {
+      font-size: $g2;
+    }
+
+    &--large {
+      font-size: $g3;
+    }
+  }
+
+  &__icon-label {
+    display: inline-block;
+  }
+
+  &__text {
+    align-items: center;
+    color: $white;
+    display: flex;
+    justify-content: center;
+
+    @include variants('color', 'normal');
+  }
+
+  /* MODIFIERS */
+
+  &--circle {
+    border-radius: 100%;
+    display: block;
+    font-size: $g2;
+    padding: 0;
+    position: relative;
+
+    &.button--x-small {
+      width: $g5;
+      height: $g5;
+      font-size: $g2 - 4;
+    }
+
+    &.button--small {
+      width: $g6;
+      height: $g6;
+    }
+
+    &.button--medium {
+      width: $g7;
+      height: $g7;
+    }
+
+    &.button--large {
+      width: $g8;
+      height: $g8;
+    }
+
+    .icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &--condensed {
+    padding: 0 $g3;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      bottom: -3px;
+      left: -3px;
+      opacity: 0.8;
+      border-radius: inherit;
+      background: $white;
+      content: '';
+    }
+
+    &:hover.button {
+      box-shadow: none;
+
+      @include variants('background-color', 'normal');
+    }
+
+    &.button--line:hover.button {
+      @include variants('border-color', 'normal');
+      @include variants('background-color', $white);
+    }
+  }
+
+  &--flat {
+    .button__text {
+      justify-content: left;
+      transition: color 300ms linear;
+      color: inherit;
+    }
+
+    &.button,
+    &.button:hover {
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      background: transparent;
+      padding: 0;
+      text-align: left;
+      text-transform: initial;
+      font-weight: 500;
+    }
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &--line {
+    &.button {
+      @include variants('border-color', 'normal');
+      @include variants('background-color', $white);
+      @include variants('color', 'normal', '', 'button__text');
+    }
+
+    &:hover:not(.button--disabled).button {
+      @include variants('background-color', 'light');
+    }
+  }
+
+  &--lowercase {
+    font-weight: 400;
+    text-transform: initial;
+  }
+
+  &--neutral-1-l {
+    .button__text {
+      color: $neutral-1;
+    }
+
+    &.button--line {
+      border-color: $neutral-1-20;
+
+      .button__text {
+        color: $neutral-1;
+      }
+    }
+  }
+
+  &--social {
+    font-size: $g3;
+    padding: 0;
+    width: 100%;
+  }
+
+  &--shadow {
+    @include box-shadow(2);
+  }
+
+  &--squared {
+    border-width: 1px;
+    border-radius: 4px;
+    background-color: transparent;
+    padding: 0 $g2;
+    height: $g5;
+    line-height: $g5;
+    font-size: $g2 - 2;
+
+    @media screen and (min-width: $tablet-min) {
+      font-size: $g2;
+    }
+
+    &.button {
+      @include variants('border-color', 'normal');
+      @include variants('color', 'normal', '', 'button__text');
+    }
+
+    &:hover:not(.button-disabled).button {
+      @include variants('background-color', 'light');
+    }
+  }
+
+  &--squared-icon {
+    border-radius: 0px;
+    display: block;
+    padding: 0;
+    width: $g4;
+    height: $g4;
+    position: relative;
+
+    @media only screen and (min-width: $tablet-min) {
+      width: $g6;
+      height: $g6;
+    }
+
+    &.button--small {
+      border-radius: $g1 / 2;
+
+      @media only screen and (min-width: $tablet-min) {
+        width: $g4;
+        height: $g4;
+      }
+    }
+
+    .icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &--transparent {
+    background: transparent;
+
+    &:hover {
+      box-shadow: none;
+      background: transparent;
+    }
+  }
+
+  &--white {
+    .button__text {
+      color: $neutral-1;
+    }
+
+    &.button:hover {
+      background: $white;
+    }
+
+    &.button--line {
+      border-color: $neutral-1;
+
+      &.button:hover {
+        background-color: $neutral-1-l;
+      }
+
+      .button__text {
+        color: $neutral-1;
+      }
+    }
+  }
+
+  &--scale-on-hover {
+    transition: transform 300ms ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import '../../../core.scss';
+
+.simulation-details {
+  &--container {
+    padding: $g1 $g2 $g2;
+  }
+
+  &--card {
+    margin-bottom: $g2;
+  }
+
+  &__actions {
+    margin: -$g2 0;
+
+    &__action {
+      padding: $g1 0;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@import '../../../core.scss';
+
+.uploading-files-notification {
+  &--content {
+    position: relative;
+    padding-left: $g4;
+
+    &--icon {
+      position: absolute;
+      top: 4px;
+      left: 0;
+    }
+  }
+}
