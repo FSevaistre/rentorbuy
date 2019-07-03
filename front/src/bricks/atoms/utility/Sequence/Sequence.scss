@@ -1,0 +1,18 @@
+@import '../../../core.scss';
+
+.sequence--item {
+  animation: show 400ms ease-in-out;
+  transform-origin: 0;
+}
+
+@keyframes show {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,46 @@
+@import '../../../core.scss';
+
+.onboarding-template {
+  margin: auto;
+  padding: $g2;
+  max-width: $desktop;
+  @media screen and (min-width: $tablet-min) {
+    margin-top: $xlarge;
+  }
+
+  &--message {
+    margin-bottom: $g1;
+    @media screen and (min-width: $mobile-large) {
+      max-width: 80%;
+    }
+    @media screen and (min-width: $tablet-min) {
+      max-width: 70%;
+    }
+
+    p:not(:last-child) {
+      margin-bottom: $g2;
+    }
+  }
+
+  &--title {
+    margin-bottom: $g2;
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g3;
+    }
+  }
+
+  &--actions {
+    margin-top: $g5;
+    @media screen and (min-width: $tablet-min) {
+      margin-left: $g7;
+    }
+  }
+
+  &--button {
+    display: flex;
+    justify-content: center;
+    @media screen and (min-width: $tablet-min) {
+      justify-content: flex-start;
+    }
+  }
+}

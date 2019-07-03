@@ -1,0 +1,51 @@
+@import '../../../core.scss';
+
+.banks-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &--img {
+    display: block;
+    margin: $g1;
+    border-radius: $g1;
+    width: $g7;
+    height: $g7;
+
+    &--white-bg {
+      border: 2px solid $neutral-1-l;
+    }
+  }
+
+  &--one-line {
+    flex-wrap: nowrap;
+
+    .banks-logos--img {
+      margin: 0;
+      margin-right: $g2;
+      width: 12%;
+      max-width: $g10;
+      height: 12%;
+      max-height: $g10;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:nth-child(n + 6) {
+        display: none;
+      }
+
+      @media screen and (min-width: $tablet-min) {
+        $value: calc(8.33% - #{$g1/12*11}); // 12 logos -> 11 gaps
+        margin-right: $g1;
+        width: $value;
+        height: $value;
+
+        &:nth-child(n) {
+          display: block;
+        }
+      }
+    }
+  }
+}

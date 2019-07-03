@@ -1,0 +1,22 @@
+@import '../../../core.scss';
+
+.sponsorship-sponsor-card {
+  &--content {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: $g2;
+
+    &--avatar {
+      margin-right: $g2;
+    }
+  }
+
+  &--status {
+    display: flex;
+    align-items: center;
+
+    &--icon {
+      margin-right: $g2;
+    }
+  }
+}

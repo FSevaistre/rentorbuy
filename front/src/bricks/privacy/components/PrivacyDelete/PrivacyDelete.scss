@@ -1,0 +1,27 @@
+@import '../../../core.scss';
+
+.privacy-delete {
+  &--content {
+    display: flex;
+
+    &--emoji {
+      flex-grow: 0;
+      margin-right: $g2;
+    }
+
+    &--text {
+      p {
+        margin-bottom: $g3;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      a {
+        text-decoration: underline;
+        color: $primary-1;
+      }
+    }
+  }
+}

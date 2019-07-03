@@ -1,0 +1,119 @@
+@import '../../../core.scss';
+
+.doc-row {
+  $elem: &;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: $g2 $g6 $g2 $g7;
+  @media screen and (min-width: $tablet-min) {
+    display: flex;
+    padding: $g3 0;
+
+    &:hover {
+      #{$elem}--icon {
+        animation: listItemBounce 2s infinite;
+        color: $primary-1;
+      }
+    }
+  }
+
+  &--section {
+    @media screen and (min-width: $tablet-min) {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    &--icon {
+      position: absolute;
+      top: $g2;
+      left: $g2;
+      margin-right: $g2;
+      font-size: $g3;
+      @media screen and (min-width: $tablet-min) {
+        position: initial;
+        margin-right: $g3;
+      }
+    }
+
+    &--tag {
+      margin-top: $g1;
+      @media screen and (min-width: $tablet-min) {
+        margin-left: auto;
+        margin-right: $g1;
+        width: $g1 * 25;
+        margin-top: 0;
+      }
+    }
+  }
+
+  &--badge {
+    position: absolute;
+    top: $g2;
+    left: $g2;
+    @media screen and (min-width: $tablet-min) {
+      display: flex;
+      position: initial;
+      flex: 0 0 $g6;
+    }
+  }
+
+  &--doc-name {
+    @media screen and (min-width: $tablet-min) {
+      flex: 1 1;
+      margin-right: $g1;
+    }
+  }
+
+  &--mortgagor-name {
+    @media screen and (min-width: $tablet-min) {
+      flex: 1 1;
+    }
+  }
+
+  &--tag {
+    @media screen and (min-width: $tablet-min) {
+      flex: 0 0 $g1 * 25;
+      margin-right: $g1;
+      white-space: nowrap;
+    }
+
+    &--content {
+      margin-top: $g1;
+      @media screen and (min-width: $tablet-min) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &--icon {
+    align-items: center;
+    display: flex;
+    position: absolute;
+    bottom: $g2;
+    top: $g2;
+    right: $g2;
+    transition: color 0.5s ease-in;
+    color: $neutral-1-40;
+    @media screen and (min-width: $tablet-min) {
+      position: initial;
+      flex: 0 0 $g4;
+    }
+  }
+}
+
+@keyframes listItemBounce {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

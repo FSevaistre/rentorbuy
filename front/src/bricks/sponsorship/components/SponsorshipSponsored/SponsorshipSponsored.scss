@@ -1,0 +1,23 @@
+@import '../../../core.scss';
+
+.sponsorship-sponsored {
+  @media screen and (min-width: $tablet-min) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: $g3;
+  }
+  @media screen and (min-width: $tablet-max) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &--card {
+    margin-bottom: $g2;
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

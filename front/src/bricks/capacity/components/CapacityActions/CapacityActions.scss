@@ -1,0 +1,16 @@
+@import '../../../core.scss';
+
+.capacity-actions {
+	margin: -$g2 0;
+
+	@media screen and (min-width: $tablet-min) {
+		display: flex;
+		justify-content: flex-end;
+		margin-right: $g1;
+		padding: $g1 0;
+	}
+
+	&__action {
+		padding: $g1 0;
+	}
+}

@@ -1,0 +1,105 @@
+@import '../../../core.scss';
+
+.capacity-page {
+  background: $neutral-1-l;
+  min-height: calc(100vh - #{$g6});
+
+  &--edit-cards {
+    background: $white;
+    padding-bottom: $g3;
+
+    &--b {
+      padding-bottom: 0;
+    }
+  }
+
+  &--wrapper {
+    margin: auto;
+    max-width: $desktop;
+  }
+
+  &--error {
+    @media screen and (min-width: $tablet-min) {
+      margin: $g3;
+    }
+  }
+
+  &__error {
+    text-align: center;
+
+    &__emoji {
+      margin-right: $g1;
+    }
+
+    &__title {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      margin: $g2;
+
+      @media screen and (min-width: $tablet-min) {
+        margin-top: $g5;
+        margin-bottom: $g3;
+      }
+    }
+
+    &__description {
+      margin: 0 $g2 $g2;
+
+      @media screen and (min-width: $tablet-min) {
+        margin: 0 $g2 $g5;
+      }
+    }
+  }
+
+  &--cta {
+    margin-top: -$g3;
+    text-align: center;
+
+    &--button {
+      background: $primary-1;
+      padding: $g2;
+      color: $white;
+      @media screen and (min-width: $tablet-min) {
+        display: inline-block;
+        border-radius: $g6;
+        padding: 0 $g3;
+        height: $g6;
+        line-height: $g6;
+      }
+
+      &--emoji {
+        margin-left: $g2;
+      }
+    }
+
+    &--b {
+      &--title {
+        margin: $g2;
+        text-align: center;
+        @media screen and (min-width: $tablet-min) {
+          margin-top: $g5;
+          margin-bottom: $g3;
+        }
+      }
+
+      &--description {
+        margin: 0 $g2 $g2;
+        text-align: center;
+        @media screen and (min-width: $tablet-min) {
+          margin: 0 $g2 $g5;
+        }
+      }
+    }
+  }
+
+  &--content {
+    &--description {
+      text-align: center;
+    }
+  }
+
+  &--actions {
+    margin: 0 $g2;
+  }
+}

@@ -1,0 +1,57 @@
+@import '../../../../core.scss';
+
+.result-card-swipe {
+  margin-bottom: -$g1;
+  overflow: hidden;
+
+  &--content {
+    position: relative;
+    padding-bottom: $g5;
+    flex-grow: 1;
+
+    @media screen and (min-width: $tablet-min) {
+      padding-bottom: $g6;
+    }
+  }
+
+  &--button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    &--container {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    &--text {
+      margin-right: $g2;
+    }
+  }
+
+  &--trustpilot {
+    &--rate {
+      @media screen and (min-width: $tablet-min) {
+        display: flex;
+      }
+    }
+
+    &--stars {
+      margin-bottom: $g1;
+      @media screen and (min-width: $tablet-min) {
+        margin-right: $g2;
+      }
+    }
+
+    &--count {
+      margin-bottom: $g2;
+    }
+  }
+
+  &--banks {
+    &--logos {
+      margin-top: $g2;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import '../../../core.scss';
+
+.editable-rows {
+  &--row {
+    margin-bottom: $g1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &--button {
+    margin-top: $g3;
+  }
+}

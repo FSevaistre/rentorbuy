@@ -1,0 +1,40 @@
+@import '../../../core.scss';
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+
+  &--back {
+    margin-right: $g2;
+    cursor: pointer;
+  }
+
+  &--steps {
+    display: flex;
+    align-items: center;
+
+    &--step {
+      $element: &;
+      display: flex;
+      align-items: center;
+      opacity: 0.4;
+      margin-right: $g2;
+
+      &--label {
+        cursor: pointer;
+      }
+
+      &:last-child {
+        opacity: 1;
+
+        #{$element}--label {
+          cursor: initial;
+        }
+      }
+
+      &--icon {
+        margin-left: $g1;
+      }
+    }
+  }
+}

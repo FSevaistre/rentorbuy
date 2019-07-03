@@ -1,0 +1,69 @@
+@import '../../../core.scss';
+
+.dashboard-card {
+  position: relative;
+
+  &--clickable {
+    cursor: pointer;
+  }
+
+  &--title {
+    align-items: center;
+    display: flex;
+    margin-bottom: $g1;
+
+    &__emoji {
+      margin-right: $g2;
+    }
+
+    &--placeholder {
+      max-width: 100px;
+    }
+  }
+
+  &--icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+
+  &--content {
+    &--children {
+      margin-top: $g3;
+    }
+  }
+
+  &--details {
+    margin-top: $g3;
+    @media screen and (min-width: $mobile-large) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--progress {
+      margin-top: $g2;
+      width: 100%;
+
+      @media screen and (min-width: $mobile-large) {
+        order: -1;
+        margin-right: $g2;
+        margin-top: 0;
+        min-width: $g10 * 2;
+        width: 25%;
+      }
+
+      &--placeholder {
+        min-height: $g1;
+      }
+    }
+
+    &--button {
+      display: inline-block;
+      @media screen and (min-width: $mobile-large) {
+        margin-left: auto;
+      }
+    }
+  }
+}

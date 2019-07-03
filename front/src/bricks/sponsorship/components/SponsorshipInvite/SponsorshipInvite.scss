@@ -1,0 +1,18 @@
+@import '../../../core.scss';
+
+.sponsorship-invite {
+  display: flex;
+  align-items: center;
+  padding: 0 $g2;
+  height: $g6;
+  color: $primary-1;
+
+  &--icon {
+    margin-right: $g2;
+    font-size: 12px;
+  }
+
+  &--text {
+    font-weight: bold;
+  }
+}

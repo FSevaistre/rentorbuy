@@ -1,0 +1,41 @@
+@import '../../../core.scss';
+
+.navbar {
+  @include variants('background-color', 'normal');
+  @include variants('color', 'opposite');
+  position: relative;
+  text-align: center;
+  line-height: $g6;
+  @media screen and (min-width: $tablet-min) {
+    line-height: $g8;
+  }
+}
+
+.navbar--title {
+  @include sub-heading('large');
+  display: inline-block;
+  padding: 0 $g6;
+  vertical-align: middle;
+  @media screen and (min-width: $tablet-min) {
+    padding: 0 $g8;
+  }
+}
+
+.navbar--icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+  padding: $g2;
+  @media screen and (min-width: $tablet-min) {
+    padding: $g3;
+  }
+}
+
+.navbar--icon-left {
+  left: 0;
+}
+
+.navbar--icon-right {
+  right: 0;
+}

@@ -1,0 +1,94 @@
+@import '../../../core.scss';
+
+.avatar {
+  @include variants('background-color', 'light');
+  @include variants('color', 'normal');
+  display: block;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-family: $circular;
+  font-size: $g2 + 4;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &--miniature {
+    width: $g4;
+    height: $g4;
+    line-height: $g4;
+  }
+
+  &--x-small {
+    width: $g5;
+    height: $g5;
+    line-height: $g5;
+  }
+
+  &--small {
+    width: $g4;
+    height: $g4;
+    line-height: $g4;
+    @media screen and (min-width: $tablet-min) {
+      width: $g6;
+      height: $g6;
+      line-height: $g6;
+    }
+  }
+
+  &--medium {
+    width: $g7;
+    height: $g7;
+    line-height: $g7;
+  }
+
+  &--large {
+    width: $g8;
+    height: $g8;
+    line-height: $g8;
+  }
+
+  &--x-large {
+    width: $g10;
+    height: $g10;
+    line-height: $g10;
+  }
+
+  &--splitted {
+    width: $g6;
+    height: $g6;
+    line-height: $g6;
+  }
+
+  &--clickable {
+    position: relative;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover .avatar--hover {
+      opacity: 1;
+      color: $white;
+    }
+
+    .avatar--hover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: opacity 200ms ease-in-out;
+      opacity: 0;
+      background: $neutral-1-60;
+      font-size: $g2;
+
+      .icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@import '../../../core.scss';
+
+.sponsorship-share-dialog {
+  &--description {
+    margin-bottom: $g1;
+  }
+
+  &--link {
+    margin: 0 $g2;
+  }
+}

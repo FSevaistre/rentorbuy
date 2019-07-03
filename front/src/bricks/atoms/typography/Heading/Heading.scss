@@ -1,0 +1,59 @@
+@import '../../../core.scss';
+
+.heading {
+  @include variants('color', 'normal');
+  font-family: 'Circular Std', sans-serif;
+
+  &--inherit {
+    color: inherit;
+  }
+
+  // sizes
+  &--small {
+    line-height: $g4;
+    letter-spacing: 0.2px;
+    font-size: $g3;
+    @media only screen and (min-width: $tablet-min) {
+      line-height: $g4;
+      font-size: $g3;
+    }
+  }
+
+  &--medium {
+    line-height: $g4;
+    letter-spacing: 0.2px;
+    font-size: $g3;
+    @media only screen and (min-width: $tablet-min) {
+      line-height: $g5;
+      letter-spacing: 0.3px;
+      font-size: $g4;
+    }
+  }
+
+  &--large {
+    line-height: $g5;
+    letter-spacing: 0.3px;
+    font-size: $g4;
+    @media only screen and (min-width: $tablet-min) {
+      line-height: $g6;
+      font-size: $g5;
+    }
+  }
+
+  &--x-large {
+    font-size: $g5;
+    line-height: $g8;
+    letter-spacing: 0.32px;
+
+    @media only screen and (min-width: $tablet-min) {
+      line-height: $g10;
+      letter-spacing: 0.48px;
+      font-size: $g8;
+    }
+  }
+
+  // formats
+  &--center {
+    text-align: center;
+  }
+}

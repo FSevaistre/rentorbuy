@@ -1,0 +1,64 @@
+@import '../../../core.scss';
+
+.projectRow {
+  &--pushed {
+    color: $accent-1;
+  }
+
+  &__description {
+    &--left-spaced {
+      padding-left: $g4;
+    }
+
+    &--right-spaced {
+      padding-right: $g4;
+    }
+  }
+
+  &__row {
+    display: flex;
+  }
+
+  &__side--left {
+    flex-grow: 1;
+    margin-right: $g3;
+
+    &--spaced {
+      padding-left: $g4;
+    }
+  }
+
+  &__side--right {
+    align-self: flex-start;
+    position: relative;
+    white-space: nowrap;
+
+    &--spaced {
+      padding-right: $g4;
+    }
+
+    &__icon {
+      align-items: center;
+      bottom: 0;
+      cursor: pointer;
+      display: flex;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  &__sign {
+    align-items: center;
+    display: flex;
+    height: $g3;
+    left: -$g4;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+  }
+
+  &__title {
+    position: relative;
+  }
+}

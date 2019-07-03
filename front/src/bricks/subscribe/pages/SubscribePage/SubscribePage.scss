@@ -1,0 +1,88 @@
+@import '../../../core.scss';
+
+.subscribe-page {
+  @media screen and (min-width: $tablet-min) {
+    padding-top: 0;
+  }
+
+  &--error-message {
+    text-align: center;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &--title {
+    display: flex;
+    margin: $g3 $g2;
+    @media screen and (min-width: $tablet-min) {
+      margin: $g3;
+    }
+    @media screen and (min-width: $tablet-max + $g6) {
+      margin-top: $g5;
+      margin-right: auto;
+      margin-left: auto;
+      max-width: $tablet-max;
+    }
+  }
+
+  &--content {
+    position: relative;
+    max-width: $tablet-max;
+    @media screen and (min-width: $tablet-min) {
+      display: flex;
+      align-items: center;
+      margin: 0 $g3;
+
+      &:before {
+        position: absolute;
+        top: $g3;
+        right: calc(50% - 50vw);
+        bottom: $g3;
+        left: calc(50% - 50vw);
+        background: $neutral-1-l;
+        content: '';
+      }
+    }
+    @media screen and (min-width: $tablet-max + $g6) {
+      margin-right: auto;
+      margin-left: auto;
+      padding: 0;
+
+      &:before {
+        right: calc(#{$tablet-max/2} - 50vw);
+        left: calc(#{$tablet-max/2} - 50vw);
+      }
+    }
+
+    &--form {
+      position: relative;
+      z-index: 1;
+      min-width: 320px;
+      @media screen and (min-width: $tablet-min) {
+        flex: 1 1 50%;
+        z-index: 1;
+      }
+    }
+
+    &--rate {
+      position: relative;
+      @media screen and (min-width: $tablet-min) {
+        flex: 1 1 50%;
+        margin-left: $g3;
+      }
+      @media screen and (min-width: $tablet-max) {
+        margin-left: $g6;
+      }
+    }
+  }
+
+  &--partners {
+    margin-top: $g1;
+
+    &--white-label {
+      margin-top: 0;
+    }
+  }
+}

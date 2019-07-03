@@ -1,0 +1,18 @@
+@import '../../../core.scss';
+
+.capacity-swipe {
+  &--content {
+    display: flex;
+
+    &--emoji {
+      margin-right: $g2;
+    }
+
+    &--description {
+      &--link {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}

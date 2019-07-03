@@ -1,0 +1,44 @@
+@import '../../../core.scss';
+
+.helper {
+  top: $g6;
+  left: $g3;
+  z-index: 1;
+
+  &--content {
+    padding: $g2;
+    @media screen and (min-width: $tablet-min) {
+      padding: $g3;
+    }
+  }
+
+  &--actions {
+    padding: $g2;
+    text-align: center;
+    @media screen and (min-width: $tablet-min) {
+      padding: $g3;
+    }
+
+    &--emojis {
+      display: flex;
+      justify-content: center;
+      margin-top: $g2;
+
+      &--up,
+      &--down {
+        cursor: pointer;
+
+        &.inactive {
+          opacity: 0.3;
+        }
+      }
+
+      &--up {
+        margin-right: $g4;
+        @media screen and (min-width: $tablet-min) {
+          margin-right: $g5;
+        }
+      }
+    }
+  }
+}

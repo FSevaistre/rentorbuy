@@ -1,0 +1,58 @@
+@import '../../../core.scss';
+
+@include property-transition('drawer--transition--left', transform, translateX(-100%), translateX(0), 500ms);
+@include property-transition('drawer--transition--right', transform, translateX(100%), translateX(0), 500ms);
+@include property-transition('drawer--transition--overlay', opacity, 0, 1, 500ms);
+
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  max-width: $mobile-min;
+  transition: visibility 0s linear 500ms;
+  visibility: hidden;
+  width: 75%;
+  z-index: 999;
+
+  @media screen and (min-width: $tablet-min) {
+    max-width: $mobile-min;
+    width: 33.33%;
+  }
+
+  &--left {
+    left: 0;
+  }
+
+  &--right {
+    right: 0;
+  }
+
+  &--is-open {
+    transition: visibility 0s linear 0s;
+    visibility: visible;
+
+    .drawer--action {
+      margin-left: $g2;
+    }
+  }
+
+  &--overlay {
+    @include overlay;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  &--content {
+    @include variants('background-color', 'normal');
+    @include variants('color', 'opposite');
+    @include box-shadow(2);
+    position: relative;
+    max-width: 80vw;
+    min-height: 100%;
+    overflow: auto;
+  }
+}

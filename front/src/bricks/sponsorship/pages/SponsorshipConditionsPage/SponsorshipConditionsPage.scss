@@ -1,0 +1,26 @@
+@import '../../../core.scss';
+
+.sponsorship-conditions-page {
+  &--paragraph {
+    margin-bottom: $g2;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  ul {
+    li {
+      list-style-type: lower-alpha;
+      list-style-position: inside;
+
+      ul {
+        padding-left: $g2;
+
+        li {
+          list-style-type: none;
+        }
+      }
+    }
+  }
+}

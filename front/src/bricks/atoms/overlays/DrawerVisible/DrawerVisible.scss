@@ -1,0 +1,90 @@
+@import '../../../core.scss';
+
+.drawer-visible {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+  min-width: 340px;
+
+  &--transition--on {
+    transition: all 500ms ease-in-out;
+  }
+
+  &--is-open {
+    .drawer--action {
+      margin-left: $g2;
+    }
+  }
+
+  &--overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+    background: rgba($white, 0.4);
+    width: 100vw;
+  }
+
+  &--content {
+    @include variants('background-color', 'normal');
+    @include variants('color', 'opposite');
+    @include box-shadow;
+    position: relative;
+    z-index: 99;
+    max-width: 80vw;
+    height: 100%;
+    min-height: 100%;
+  }
+
+  &--action {
+    position: absolute;
+    top: $g3;
+    left: 100%;
+    transition: all 300ms ease-in-out;
+    z-index: 100;
+    margin-left: -$g5 / 2;
+    border-radius: 50%;
+    background: $neutral-1;
+    cursor: pointer;
+    padding: $g1 * 1.5;
+    color: $white;
+  }
+
+  &--full {
+    min-width: initial;
+    min-height: calc(100vh - #{$g6});
+    @media screen and (min-width: $tablet-min) {
+      min-height: calc(100vh - #{$g8});
+    }
+
+    .drawer-visible {
+      &--content {
+        box-shadow: none;
+        width: 100vw;
+        max-width: 100vw;
+        overflow: hidden;
+        @media screen and (min-width: $tablet-min) {
+          width: 80vw;
+          max-width: 80vw;
+        }
+      }
+    }
+  }
+}
+
+// variant colors
+
+@each $variant, $bgc, $c in (white, $white, $neutral-1), (primary-1, $primary-1, $white),
+  (neutral-1, $neutral-1, $white), (neutral-1-l, $neutral-1-l, $neutral-1), (neutral-1-20, $neutral-1-20, $white),
+  (neutral-1-40, $neutral-1-40, $white), (neutral-1-60, $neutral-1-60, $white), (neutral-1-80, $neutral-1-80, $white),
+  (accent-1, $accent-1, $white), (accent-2, $accent-2, $neutral-1), (accent-3, $accent-3, $neutral-1),
+  (accent-4, $accent-4, $white), (accent-5, $accent-5, $white)
+{
+  .drawer-visible--#{$variant} .drawer-visible--content {
+    background-color: $bgc;
+    color: $c;
+  }
+}

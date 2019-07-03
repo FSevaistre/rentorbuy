@@ -1,0 +1,71 @@
+@import '../../../core.scss';
+
+.choice-categories {
+  display: flex;
+  flex-direction: column;
+  min-height: inherit;
+
+  @media screen and (min-width: $tablet-min) {
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: stretch;
+    transition: all 250ms linear;
+    overflow: hidden;
+  }
+
+  &--purchase,
+  &--renegotiation {
+    flex-basis: 50%;
+
+    @media screen and (min-width: $tablet-min) {
+      display: flex;
+      position: relative;
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.25s linear;
+      cursor: pointer;
+      vertical-align: center;
+      text-align: center;
+
+      &:hover {
+        flex: 1 1 52%;
+
+        .choice-categories--start {
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  &--start {
+    position: absolute;
+    bottom: -50px;
+    transition: all 0.35s ease-out;
+    border-bottom: $g1 solid $primary-1;
+    padding-bottom: $g3;
+    width: 100%;
+    text-transform: uppercase;
+    color: $primary-1;
+    font-weight: bold;
+  }
+
+  &--purchase {
+    @media screen and (min-width: $tablet-min) {
+      left: 0;
+      border-right: 1px solid $neutral-1-20;
+    }
+  }
+
+  &--renegotiation {
+    left: 0;
+    @media screen and (min-width: $tablet-min) {
+      border-left: 1px solid $neutral-1-20;
+    }
+  }
+}

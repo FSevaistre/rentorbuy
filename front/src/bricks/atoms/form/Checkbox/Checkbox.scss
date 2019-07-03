@@ -1,0 +1,65 @@
+@import '../../../core.scss';
+
+.checkbox {
+  @include variants('color', 'normal');
+}
+
+.checkbox--content {
+  min-height: $g3;
+  position: relative;
+}
+
+.checkbox--button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 2px solid;
+  border-radius: $g1 / 2;
+  cursor: pointer;
+  width: $g3;
+  height: $g3;
+  vertical-align: middle;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:before {
+    @include scale(0);
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 10.7px;
+  }
+}
+
+.checkbox--unchecked {
+  @include variants('border-color', 'normal');
+}
+
+.checkbox--checked {
+  &.checkbox {
+    @include variants('border-color', 'normal');
+  }
+
+  &:before {
+    @include scale(1);
+  }
+}
+
+.checkbox--label {
+  cursor: pointer;
+  display: block;
+  margin-left: $g5;
+  vertical-align: middle;
+}

@@ -1,0 +1,11 @@
+@import '../../../core.scss';
+
+.privacy-information {
+  &--category {
+    margin-bottom: $g2;
+  }
+
+  &--services {
+    margin-bottom: $g1;
+  }
+}

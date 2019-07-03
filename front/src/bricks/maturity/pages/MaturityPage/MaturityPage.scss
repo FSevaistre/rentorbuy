@@ -1,0 +1,27 @@
+@import '../../../core.scss';
+
+.maturity-page {
+  margin: auto;
+  max-width: $tablet-min;
+  @media screen and (min-width: $tablet-min) {
+    margin-top: $g3;
+  }
+
+  &--heading {
+    margin-bottom: $g3;
+
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g4;
+    }
+  }
+
+  &--content {
+    @media screen and (min-width: $tablet-min) {
+      max-width: $mobile-large;
+    }
+
+    &--message {
+      margin-bottom: $g3;
+    }
+  }
+}

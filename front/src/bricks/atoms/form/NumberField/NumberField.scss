@@ -1,0 +1,56 @@
+@import '../../../core.scss';
+
+.numberfield--input {
+  @include input;
+  @include variants('border-bottom-color', 'normal');
+  display: inline-block;
+  padding: 0;
+  line-height: $g4;
+  letter-spacing: normal;
+  @media screen and (min-width: $tablet-min) {
+    padding: 0;
+  }
+
+  &:focus-within {
+    @extend %focused-index;
+  }
+
+  &--textfield {
+    border-bottom-style: solid;
+    width: 100px;
+
+    input {
+      width: 100%;
+      text-align: right;
+    }
+  }
+
+  &--form {
+    border-bottom-style: solid;
+    padding-left: $g1;
+    width: 100%;
+    height: $g6;
+    line-height: $g6 - 2;
+
+    input {
+      background: transparent;
+      width: 100% !important; //overrides cleave js width
+      text-align: left;
+      color: $neutral-1;
+      font-weight: normal;
+    }
+  }
+
+  &--editable-field {
+    border-bottom-style: solid;
+    height: $g6;
+    line-height: $g6;
+
+    input {
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      font-weight: 500;
+    }
+  }
+}

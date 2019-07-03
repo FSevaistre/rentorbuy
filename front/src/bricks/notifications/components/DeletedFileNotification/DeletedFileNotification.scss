@@ -1,0 +1,12 @@
+@import '../../../core.scss';
+
+.deleted-file-notification {
+  position: relative;
+  padding-left: $g4;
+
+  &--icon {
+    position: absolute;
+    top: 4px;
+    left: 0;
+  }
+}

@@ -1,0 +1,60 @@
+@import '../../../core.scss';
+
+.more-information {
+  margin: 0 auto $g1;
+  max-width: $tablet-min + $g1 * 21;
+
+  &--messages {
+    margin-bottom: $g4;
+
+    @media screen and (min-width: $tablet-min) {
+      margin-top: $g2;
+      margin-bottom: $g6;
+    }
+  }
+
+  &--form {
+    margin: auto;
+    max-width: $tablet-min;
+
+    &--section {
+      @extend %form-section;
+
+      &--divider {
+        @extend %form-divider;
+      }
+    }
+
+    &--actions {
+      position: relative;
+
+      &--previous {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -$g2;
+        transition: color 300ms ease-out;
+        cursor: pointer;
+        padding: $g2;
+        color: $neutral-1-40;
+
+        &:hover {
+          color: $neutral-1-60;
+        }
+      }
+
+      &--next {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  &--progress {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+  }
+}

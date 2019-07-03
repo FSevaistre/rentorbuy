@@ -1,0 +1,123 @@
+@import '../../../core.scss';
+
+.upload-page {
+  margin-bottom: $g10;
+  @media screen and (min-width: $tablet-min) {
+    margin-bottom: 0;
+  }
+
+  &--breadcrumb {
+    padding: $g2 0;
+    @media screen and (min-width: $tablet-min) {
+      margin-left: $g3;
+    }
+    @media screen and (min-width: $desktop + $g3) {
+      margin: auto;
+      max-width: $desktop;
+    }
+  }
+
+  &--container {
+    margin: auto;
+    max-width: $desktop;
+
+    @media screen and (min-width: $tablet-min) {
+      display: flex;
+      position: relative;
+      align-items: stretch;
+      min-height: calc(100vh - #{($g7 + $g8 + $g1 + 1)});
+      overflow: hidden;
+    }
+
+    @media screen and (min-width: $tablet-max) {
+      padding-left: $g3;
+    }
+
+    @media screen and (min-width: $desktop + $g3) {
+      overflow: initial;
+    }
+  }
+
+  &--content {
+    @media screen and (min-width: $tablet-min) {
+      flex: 2 1 66.66%;
+      order: 1;
+      margin-right: $g5;
+      margin-bottom: $g3;
+      margin-left: $g6;
+      width: calc(66.66% - #{$g5});
+    }
+    @media screen and (min-width: $tablet-max) {
+      margin-left: 0;
+    }
+
+    &--title {
+      margin-top: $g4;
+      margin-bottom: $g3;
+    }
+
+    &--error {
+      margin-bottom: $g3;
+    }
+
+    &--list {
+      margin-bottom: $g1 * 12;
+      @media screen and (min-width: $tablet-min) {
+        margin-bottom: 0;
+      }
+    }
+
+    &--upload {
+      position: fixed;
+      right: 0;
+      bottom: $g1;
+      left: 0;
+      z-index: 1;
+      padding: $g2;
+      @media screen and (min-width: $tablet-min) {
+        position: initial;
+        margin-bottom: $g6;
+        padding: 0;
+      }
+    }
+  }
+
+  &--information {
+    position: relative;
+    @media screen and (min-width: $tablet-min) {
+      flex: 1 0 33.33%;
+      order: 2;
+      background: $neutral-1-l;
+      height: 100%;
+    }
+    @media screen and (min-width: $tablet-max) {
+      height: initial;
+    }
+    @media screen and (min-width: $desktop) {
+      &:before {
+        position: absolute;
+        top: 0;
+        right: calc(#{$desktop/2} - 50vw);
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        background: $neutral-1-l;
+        content: '';
+      }
+    }
+  }
+
+  &--list-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $neutral-1-l;
+    padding: 0 $g2;
+    height: $g6;
+
+    @media screen and (min-width: $tablet-min) {
+      background: initial;
+      padding: 0;
+    }
+  }
+}

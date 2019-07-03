@@ -1,0 +1,26 @@
+@import '../../../core.scss';
+
+.credit-capability {
+  &__cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__emoji {
+    margin-right: $g2;
+  }
+
+  &__header {
+    display: flex;
+  }
+
+  &__header,
+  &__description {
+    margin-bottom: $g2;
+  }
+
+  &__link {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

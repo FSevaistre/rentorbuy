@@ -1,0 +1,19 @@
+@import '../../../../core.scss';
+
+.simulator--result-card-banks {
+  &--logos {
+    margin-bottom: $g3;
+  }
+
+  &--title {
+    margin-bottom: $g2;
+
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g3;
+    }
+  }
+
+  &--button {
+    display: inline-block;
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../../core.scss';
+
+.progress-marked {
+  display: flex;
+  align-items: center;
+
+  &--bar {
+    flex-grow: 1;
+    margin-right: $g1;
+    @media screen and (min-width: $mobile-large) {
+      margin-right: $g2;
+    }
+  }
+
+  &--marks {
+    display: flex;
+    align-items: center;
+
+    &--icon {
+      margin-right: $g3;
+      @media screen and (min-width: $mobile-large) {
+        margin-right: $g1;
+      }
+    }
+  }
+}

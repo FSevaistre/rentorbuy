@@ -1,0 +1,174 @@
+@import '../../../core.scss';
+
+@include property-transition('sentences--button--transition', opacity, 0, 1);
+@include property-transition('sentences--button--transition', transform, translateY(2em), translateY(0));
+
+@include property-transition('sentences--helper--transition', opacity, 0, 1, 500ms);
+@include property-transition('sentences--helper--transition', transform, scale(0.9), scale(1), 500ms);
+
+@include slide('sentences--footer--progress--transition', 'bottom');
+
+.sentences {
+  &--wrapper {
+    margin: auto;
+  }
+
+  &--content {
+    padding-bottom: $g7;
+  }
+
+  &--footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+
+    &--progress {
+      position: relative; // here for it to be positionned on top of button animation
+      background: $white;
+    }
+  }
+
+  @media screen and (min-width: $tablet-max) {
+    display: flex;
+  }
+
+  &--main {
+    padding: $g3 0;
+    @media screen and (min-width: $tablet-max) {
+      flex: 0 0 66.66%;
+      padding: $g5;
+    }
+
+    &--header {
+      margin-bottom: $g5;
+
+      &--title {
+        margin-left: $g2;
+
+        &--emoji {
+          margin-right: $g3;
+        }
+
+        &--text {
+          vertical-align: middle;
+        }
+      }
+    }
+
+    &--footer {
+      display: flex;
+      position: fixed;
+      right: $g1 * 13;
+      bottom: $g3;
+      left: $g1 * 13;
+      justify-content: center;
+      @media screen and (min-width: $tablet-max) {
+        display: flex;
+        position: initial;
+      }
+
+      &--previous {
+        position: absolute;
+        left: $g2;
+        cursor: pointer;
+        padding: $g2;
+        @media screen and (min-width: $tablet-max) {
+          position: fixed;
+          bottom: $g3;
+          z-index: 1;
+        }
+      }
+
+      &--button {
+        @media screen and (min-width: $tablet-max) {
+          margin-top: $g3;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &--sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    @media screen and (min-width: $tablet-max) {
+      position: relative;
+      flex: 0 0 33.33%;
+      padding: $g7 $g3 $g3;
+
+      &:before {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 66.66%;
+        z-index: -1;
+        background: $neutral-1-l;
+        content: '';
+        @media screen and (min-width: $desktop) {
+          left: calc(50vw - #{$desktop / 2} + #{$desktop * 0.6666});
+        }
+      }
+    }
+
+    &--helper {
+      position: absolute;
+      top: $g1 * 11;
+      right: $g3;
+      left: $g3;
+
+      &--icon {
+        display: inline-block;
+        margin-top: -$g2;
+        margin-bottom: $g1;
+        margin-left: -$g2;
+        padding: $g2;
+      }
+    }
+
+    &--no-timeline {
+      background: transparent;
+    }
+
+    &--dialog {
+      background: $neutral-1-l;
+      padding: $g2;
+      padding-top: $g8;
+      min-height: 100%;
+
+      &--close {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: $g2;
+      }
+    }
+
+    &--icon {
+      position: absolute;
+      bottom: $g1;
+      left: 0;
+      padding: $g2;
+      @media screen and (min-width: $tablet-max) {
+        top: 0;
+        bottom: initial;
+        cursor: pointer;
+        padding: $g3;
+      }
+
+      &--label {
+        display: flex;
+        align-items: center;
+
+        &--add {
+          margin-left: $g2;
+          font-size: $g2 - 4;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+$primary-1: #35ae77;
+$primary-1-l: #d3f5e4;
+$primary-1-d: #26895c;
+
+$primary-1-20: rgba($primary-1, 0.2);
+$primary-1-30: rgba($primary-1, 0.3);
+$primary-1-40: rgba($primary-1, 0.4);
+$primary-1-60: rgba($primary-1, 0.6);
+$primary-1-80: rgba($primary-1, 0.8);
+
+$primary-2: #8acab7;
+$primary-2-l: #e8f4f1;
+$primary-2-d: #42b491;
+
+$neutral-1: #173753;
+$neutral-1-l: #edf1f5;
+$neutral-1-d: #122a3e;
+
+$neutral-1-20: rgba($neutral-1, 0.2);
+$neutral-1-30: rgba($neutral-1, 0.3);
+$neutral-1-40: rgba($neutral-1, 0.4);
+$neutral-1-60: rgba($neutral-1, 0.6);
+$neutral-1-80: rgba($neutral-1, 0.8);
+
+$accent-1: #1098f7;
+$accent-1-l: #cfeafd;
+$accent-1-d: #1e88d2;
+
+$accent-2: #50cdeb;
+$accent-2-l: #e5f8fc;
+$accent-2-d: #18b2d7;
+
+$accent-3: #ffac14;
+$accent-3-l: #fff8ec;
+$accent-3-d: #f08a4b;
+
+$accent-4: #8474ef;
+$accent-4-l: #e9dffb;
+$accent-4-d: #661de2;
+
+$accent-4-20: rgba($accent-4, 0.2);
+$accent-4-30: rgba($accent-4, 0.3);
+$accent-4-40: rgba($accent-4, 0.4);
+$accent-4-60: rgba($accent-4, 0.6);
+$accent-4-80: rgba($accent-4, 0.8);
+
+$accent-5: #de235b;
+$accent-5-l: #f8e4ea;
+$accent-5-d: #b3073a;
+
+$success: #128c74;
+$success-l: #ddefea;
+$success-d: darken($success, 10%);
+
+$warning: #e88040;
+$warning-l: #fbebe0;
+$warning-d: darken($warning, 10%);
+
+$error: #b73246;
+$error-l: #f5e2e5;
+$error-d: darken($error, 10%);
+
+$gradient-2: #45e59c;
+$gradient-primary-1: linear-gradient(90deg, $primary-1, $primary-1-l);
+$gradient-primary-2: linear-gradient(90deg, $gradient-2 0%, $primary-1 100%);
+$gradient-primary-3: linear-gradient(90deg, $primary-1, $accent-2);
+
+$facebook: #4267b2;
+$linkedin: #3b5998;
+$twitter: #1da1f2;
+$whatsapp: #25d366;
+
+$white: #fff;

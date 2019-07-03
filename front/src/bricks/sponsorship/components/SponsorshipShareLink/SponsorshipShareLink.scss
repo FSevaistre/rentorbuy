@@ -1,0 +1,62 @@
+@import '../../../core.scss';
+
+.sponsorship-share-link {
+  $elem: &;
+  display: flex;
+  position: relative;
+  align-items: center;
+  border-bottom: 2px solid $primary-1;
+  cursor: pointer;
+  height: $g6;
+
+  &:hover {
+    #{$elem}--icon {
+      animation: listItemBounce 2s infinite;
+    }
+  }
+
+  &--copied {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 300ms ease-out, transform 0s linear 300ms;
+    transform: scale(1.06);
+    z-index: 1;
+
+    &--visible {
+      opacity: 1;
+      transition: opacity 300ms ease-out, transform 200ms ease-out 0s;
+      transform: scale(1);
+    }
+  }
+
+  &--icon {
+    margin: 0 $g1;
+  }
+
+  &--text {
+    margin-right: $g1;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@keyframes listItemBounce {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

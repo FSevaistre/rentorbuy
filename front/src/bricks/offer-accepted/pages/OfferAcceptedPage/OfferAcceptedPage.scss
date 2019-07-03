@@ -1,0 +1,29 @@
+@import '../../../core.scss';
+
+.offer-accepted {
+  margin: 0 auto $g1;
+  padding: $g2;
+  max-width: $tablet-max;
+  @media screen and (min-width: $tablet-min) {
+    padding: $g3;
+  }
+
+  &--container {
+    margin-top: $g5;
+    @media screen and (min-width: $tablet-min) {
+      margin-left: $g7;
+    }
+  }
+
+  &--field {
+    margin-bottom: $g2;
+    max-width: 300px;
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g3;
+    }
+
+    &--name {
+      margin-bottom: $g1;
+    }
+  }
+}

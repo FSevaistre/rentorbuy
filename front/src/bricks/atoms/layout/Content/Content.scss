@@ -1,0 +1,30 @@
+@import '../../../core.scss';
+
+.atom--content {
+  @include variants(background-color, normal);
+
+  // SIZES
+  &--responsive {
+    padding: $g2;
+    @media screen and (min-width: $tablet-min) {
+      padding: $g3;
+    }
+  }
+
+  &--x-small {
+    padding: $g1 $g2;
+  }
+
+  &--small {
+    padding: $g2;
+  }
+
+  // FORMATS
+  &--center {
+    text-align: center;
+  }
+
+  &--full-height {
+    height: 100%;
+  }
+}

@@ -1,0 +1,9 @@
+@import '../../../core.scss';
+
+.form-section {
+  @extend %form-section;
+
+  &--title {
+    @extend %section-title;
+  }
+}

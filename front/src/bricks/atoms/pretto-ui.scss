@@ -1,0 +1,106 @@
+@import '../core.scss';
+@import '../theme.scss';
+
+body {
+  color: $neutral-1;
+
+  // preview
+  .rsg--preview-57,
+  .rsg--preview-59 {
+    overflow: hidden;
+
+    @media screen and (max-width: $tablet-min - 1) {
+      // margin-right: - $g4;
+      // margin-left: - $g4;
+      // border: 0;
+      // border-radius: 0;
+      // padding: 0;
+    }
+  }
+
+  .rsg--pre-51 {
+    white-space: initial;
+  }
+}
+
+.rsg--table-73 .rsg--code-50 {
+  border: 1px solid $neutral-1-20;
+  border-radius: 4px;
+  background: $neutral-1-l;
+  padding: 0 4px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.display-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: $g2;
+  @media screen and (min-width: $tablet-min) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.styleguide {
+  &--icons {
+    display: grid;
+    flex-wrap: wrap;
+    text-align: center;
+    grid-gap: $g1;
+    list-style-type: none;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  }
+
+  &--icon {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+    border-radius: 4px;
+    background: $neutral-1-l;
+    padding: $g1;
+    height: 70px;
+    overflow: hidden;
+
+    &--copied {
+      @include transition(all 1000ms ease-in-out);
+      @include box-shadow;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      transform: translateY(-100%);
+      background: rgba($white, 0.7);
+      text-transform: uppercase;
+
+      &.visible {
+        transform: translateY(0);
+        visibility: visible;
+        opacity: 1;
+      }
+
+      &.hidden {
+        transform: translateY(-100%);
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+
+    code {
+      position: absolute;
+      bottom: 0;
+      opacity: 0.4;
+      z-index: 10;
+      white-space: nowrap;
+      font-size: 12px;
+    }
+
+    textarea {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+}

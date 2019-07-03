@@ -1,0 +1,50 @@
+@import '../../../core.scss';
+
+%card {
+  margin: $g2;
+  border: 1px solid $neutral-1-20;
+  border-radius: 4px;
+  padding: $g2;
+  @media screen and (min-width: $tablet-min) {
+    display: flex;
+    align-items: center;
+    margin: 0 $g2 $g5 0;
+    padding: 0 $g3;
+  }
+}
+
+.capacity-budget {
+  overflow: hidden;
+  padding-top: $g1;
+
+  @media screen and (min-width: $tablet-min) {
+    display: flex;
+    padding-top: 0;
+  }
+
+  &--slider {
+    @extend %card;
+    margin-top: 0;
+    @media screen and (min-width: $tablet-min) {
+      flex: 2 1;
+      min-width: $g1 * 27;
+    }
+  }
+
+  &--fieldset {
+    @extend %card;
+    @media screen and (min-width: $tablet-min) {
+      flex: 1 1;
+      min-width: $g1 * 21;
+    }
+  }
+
+  &--swipe {
+    margin-top: $g2;
+    @media screen and (min-width: $tablet-min) {
+      margin-top: 0;
+      max-width: $g1 * 38;
+      overflow: hidden;
+    }
+  }
+}

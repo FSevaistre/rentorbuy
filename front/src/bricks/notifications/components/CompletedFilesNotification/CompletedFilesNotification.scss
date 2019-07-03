@@ -1,0 +1,15 @@
+@import '../../../core.scss';
+
+.completed-files-notification {
+  position: relative;
+
+  &--icon {
+    position: absolute;
+    top: 4px;
+    left: 0;
+  }
+
+  &--content {
+    padding-left: $g4;
+  }
+}

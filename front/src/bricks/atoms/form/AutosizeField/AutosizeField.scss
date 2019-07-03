@@ -1,0 +1,13 @@
+@import '../../../core.scss';
+
+.autosize--input {
+  @include input;
+  display: inline-block;
+  padding: 0 $g1;
+  line-height: $g4;
+  letter-spacing: normal;
+
+  &:focus-within {
+    @extend %focused-index;
+  }
+}

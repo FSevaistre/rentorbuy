@@ -1,0 +1,23 @@
+@import '../../../core.scss';
+
+.information-cards {
+  display: flex;
+  // margin-top: $g2;
+  // margin-bottom: $g2;
+  padding: 0 $g2;
+  overflow: auto;
+  white-space: nowrap;
+
+  &--card {
+    margin-right: $g1;
+
+    &:last-child {
+      margin-right: 0;
+      padding-right: $g2;
+    }
+
+    &--icon {
+      margin-right: -$g1;
+    }
+  }
+}

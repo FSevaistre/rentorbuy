@@ -1,0 +1,9 @@
+@import '../../../core.scss';
+
+.uploaded-documents-list {
+  &--error {
+    @media screen and (min-width: $tablet-min) {
+      margin-bottom: $g2;
+    }
+  }
+}

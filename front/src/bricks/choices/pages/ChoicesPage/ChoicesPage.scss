@@ -1,0 +1,63 @@
+@import '../../../core.scss';
+
+.choices-page {
+  padding: $g3 0;
+
+  &--wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - #{$g6});
+    overflow: hidden;
+
+    @media screen and (min-width: $tablet-min) {
+      min-height: calc(100vh - #{$g8});
+    }
+
+    &-extra {
+      @media screen and (min-width: $tablet-min) {
+        min-height: calc(100vh - #{$g8 + $g7});
+      }
+    }
+  }
+
+  @media screen and (min-width: $tablet-min) {
+    margin: auto;
+    padding: $g5 $g2;
+    max-width: $g1 * 78;
+  }
+
+  &--description {
+    margin-bottom: $g3;
+  }
+
+  &--heading {
+    margin-bottom: $g3;
+    padding: 0 $g2;
+    text-align: center;
+    @media screen and (min-width: $tablet-min) {
+      padding: 0;
+      text-align: left;
+    }
+  }
+
+  &--categories {
+    display: flex;
+    min-height: inherit;
+
+    &--open {
+      .choice-categories--renegotiation {
+        left: 28vw;
+        flex: 0 0 50%;
+        transition: left 250ms ease-in-out 250ms;
+        @media screen and (min-width: $tablet-min + $g3) {
+          left: 30vw;
+        }
+
+        .choice-category {
+          right: calc(20vw - 180px);
+          transition-delay: 250ms;
+        }
+      }
+    }
+  }
+}
