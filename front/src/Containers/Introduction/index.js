@@ -31,7 +31,7 @@ class Introduction extends Component {
     const { contribution, zipcode } = this.state
     const income = this.salary()
     const promise = await fetch(
-      `http://localhost:3000/initialize`,
+      `http://10.10.0.95:3000/initialize`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -49,7 +49,7 @@ class Introduction extends Component {
   }
   getResults = async () => {
     const promise = await fetch(
-      `http://localhost:3000/sharpen`,
+      `http://10.10.0.95:3000/sharpen`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
