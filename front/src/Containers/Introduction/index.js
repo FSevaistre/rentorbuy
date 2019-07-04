@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { omit } from 'lodash'
 import PropTypes from 'prop-types'
 import Summary from '../Summary'
 import Sentence from '../Sentence'
@@ -47,18 +48,21 @@ class Introduction extends Component {
     }))
   }
   getResults = async () => {
-    // const data = {}
-    // const promise = await fetch(
-    //   `http://localhost:3000/sharpen?data=${JSON.stringify(data)}`
-    // )
-    // const results = await promise.json()
-    // this.setState(prevState => ({
-    //   ...prevState,
-    //   results: {
-    //     ...prevState.results,
-    //     price_per_sqm: 10000
-    //   }
-    // }))
+    const promise = await fetch(
+      `http://localhost:3000/sharpen`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(omit(this.state.results, ["facts"]))
+      }
+    )
+    const results = await promise.json()
+    this.setState(prevState => ({
+      ...prevState,
+      initialized: true,
+      loading: false,
+      results
+    }))
   }
   handleSelect = key => ({ value }) =>
     this.setState({ initialized: false, [key]: value })
@@ -77,11 +81,10 @@ class Introduction extends Component {
     this.getResults()
   }
 
-  handleChangeInput = key => ({ value }) =>
+  handleChangeInput = key => (value) =>
     this.setState(prevState => ({
       ...prevState,
-      results: {
-        ...prevState.results,
+      results: { ...prevState.results,
         [key]: value
       }
     }))
@@ -143,6 +146,13 @@ class Introduction extends Component {
               />
             </S.Graph>
             <p> Il devient plus rentable d'acheter au bout de {this.state.results.facts.equilibrium} ans passés dans le bien</p>
+              <Input
+                value={this.state.results.home_price_growth_rate || ''}
+                type='decimal'
+                onChange={this.handleChangeInput('home_price_growth_rate')}
+                label="Taux d'augmentation de l'immobilier"
+                placeholder="1"
+              />
             <Divider>Affiner</Divider>
             <div>
               <div>Bien à l’achat</div>
@@ -160,11 +170,25 @@ class Introduction extends Component {
               />
               <Input
                 value={this.state.results.facts.price}
-                // onChange={this.handleChangeInput('price_per_sqm')}
-                label="Prix du bien"
-                // placeholder="300 000"
+                label=""
               />
               <div>Bien à la location</div>
+              <Input
+                value={this.state.results.facts.rent || ''}
+                label="Loyer"
+              />
+              <Input
+                value={this.state.results.rented_surface || ''}
+                onChange={this.handleChangeInput('rented_surface')}
+                label="Surface"
+                placeholder="100"
+              />
+              <Input
+                value={this.state.results.rent_per_sqm}
+                onChange={this.handleChangeInput('rent_per_sqm')}
+                label="Loyer au m²"
+                placeholder="300 000"
+              />
             </div>
             <div>
               <div>Épargne</div>

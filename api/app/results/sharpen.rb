@@ -78,10 +78,6 @@ module Results
       @rent_per_sqm * @rented_surface
     end
   
-    def price
-      @price_per_sqm * @purchase_surface
-    end
-  
     def payment
       principal * (rate / (1 - (1 + rate) ** (-@mortgage_duration*12)))
     end
@@ -95,60 +91,20 @@ module Results
       @_rate ||= @mortgage_rate / 1200
     end
 
-    def monthly_savings
-      payment - rent
-    end
-
     def price
       @_price ||= @price_per_sqm * @purchase_surface
     end
 
-    def price_per_sqm
-      @price_per_sqm
-    end
-
-    def rent_per_sqm
-      @_rent_per_sqm
-    end
-
-    def land_tax
-      @land_tax
-    end
-
-    def notary_fees
-      @notary_fees
-    end
-
-    def guaranty_fees
-      @guaranty_fees
-    end
-
-    def property_charges
-      @property_charges
-    end
-
-    def housing_tax
-      @housing_tax
-    end
-
     def rate
-      @_rate = MORTGAGE_RATE / 1200
+      @_rate = @mortgage_rate / 1200
     end
 
-    def insurance_rate
-      @_rate = INSURANCE_RATE / 1200
-    end
-
-    def principal
-      @_principal ||= ((payment * rate / (rate + insurance_rate * (1 - (1+rate)**-insurance_rate))) * (1 - (1 + rate)**-(MORTGAGE_DURATION*12))) / rate
+    def monthlty_insurance_rate
+      @_rate = @insurance_rate / 1200
     end
 
     def remaining_principal(duration)
-      ((payment * rate / (rate + insurance_rate * (1 - (1+rate)**-insurance_rate))) * (1 - (1 + rate)**-((MORTGAGE_DURATION-duration)*12))) / rate
-    end
-
-    def agency_fees
-      @agency_fees
+      ((payment * rate / (rate + monthlty_insurance_rate * (1 - (1+rate)**-monthlty_insurance_rate))) * (1 - (1 + rate)**-((@mortgage_duration-duration)*12))) / rate
     end
 
     def costs
@@ -160,7 +116,7 @@ module Results
             recuring_costs: (duration * 12 * rent + duration * @housing_tax).to_i
           },
           purchase: {
-            final_savings: - (price * (1 + HOME_PRICE_GROWTH_RATE/100)**(duration-1) - remaining_principal(duration)).to_i,
+            final_savings: - (price * (1 + @home_price_growth_rate/100)**(duration-1) - remaining_principal(duration)).to_i,
             initial_costs: (@guaranty_fees + @notary_fees).to_i,
             recuring_costs: ((payment * 12 + @property_charges + @land_tax) * duration).to_i
           }
@@ -173,12 +129,12 @@ module Results
         next if d[:rent].values.sum < d[:purchase].values.sum
         return i + 1
       end
-      nil
+      25
     end
 
     def rent_final_savings(duration)
-      @contribution * (1 + SAVINGS_RETURN_RATE/100)**duration + monthly_savings * (1..duration-1).sum do |k|
-        (1 - (SAVINGS_RETURN_RATE/100)**k)/(1 - SAVINGS_RETURN_RATE/100)
+      @contribution * (1 + @savings_return_rate/100)**duration + @monthly_savings * (1..duration-1).sum do |k|
+        (1 - (@savings_return_rate/100)**k)/(1 - @savings_return_rate/100)
       end
     end
 

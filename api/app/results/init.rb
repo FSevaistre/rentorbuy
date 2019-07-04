@@ -1,13 +1,13 @@
 module Results
   class Init
 
-    INFLATION_RATE = 1.2
-    RENT_GROWTH_RATE = 1.05
-    HOME_PRICE_GROWTH_RATE = 1.1
-    SAVINGS_RETURN_RATE = 1.5
+    INFLATION_RATE = 1.0
+    RENT_GROWTH_RATE = 1.0
+    HOME_PRICE_GROWTH_RATE = 3.0
+    SAVINGS_RETURN_RATE = 1.0
     MORTGAGE_RATE = 1.5
     MORTGAGE_DURATION = 25
-    INSURANCE_RATE = 0.36
+    INSURANCE_RATE = 0.2
 
     def self.call(payload)
       new(payload).call
@@ -86,7 +86,7 @@ module Results
     def land_tax
       ponderation = 1
       abattement = 0.5
-      YAML.load(File.read("app/config/land_tax.yml"))[department] * ponderation * abattement * purchase_surface * rent_per_sqm
+      YAML.load(File.read("app/config/land_tax.yml"))[department] * ponderation * abattement * purchase_surface * rent_per_sqm * 12/100
     end
 
     def notary_fees
@@ -94,7 +94,7 @@ module Results
     end
 
     def guaranty_fees
-      @_guaranty_fees ||= principal * 0.03
+      @_guaranty_fees ||= principal * 0.01
     end
 
     def property_charges
@@ -155,7 +155,7 @@ module Results
         next if d[:rent].values.sum < d[:purchase].values.sum
         return i + 1
       end
-      nil
+      25
     end
 
     def rent_final_savings(duration)
