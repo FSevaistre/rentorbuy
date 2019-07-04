@@ -116,7 +116,7 @@ module Results
             recuring_costs: (duration * 12 * rent + duration * @housing_tax).to_i
           },
           purchase: {
-            final_savings: - (price * (1 + @home_price_growth_rate/100)**(duration-1) - remaining_principal(duration)).to_i,
+            final_savings: - (price * (1 + @home_price_growth_rate/100.0)**(duration-1) - remaining_principal(duration)).to_i,
             initial_costs: (@guaranty_fees + @notary_fees).to_i,
             recuring_costs: ((payment * 12 + @property_charges + @land_tax) * duration).to_i
           }
@@ -133,8 +133,8 @@ module Results
     end
 
     def rent_final_savings(duration)
-      @contribution * (1 + @savings_return_rate/100)**duration + @monthly_savings * (1..duration-1).sum do |k|
-        (1 - (@savings_return_rate/100)**k)/(1 - @savings_return_rate/100)
+      @contribution * (1 + @savings_return_rate/100.0)**duration + @monthly_savings * (1..duration-1).sum do |k|
+        (1 - (@savings_return_rate/100.0)**k)/(1 - @savings_return_rate/100.0)
       end
     end
 
