@@ -10,11 +10,12 @@ import * as S from './styles'
 class Introduction extends Component {
   state = {
     initialized: false,
-    income: '',
-    contribution: '',
-    zipcode: '',
-    incomeKind: '',
-    period: '',
+    income: 2000,
+    contribution: 30000,
+    zipcode: '75002',
+    incomeKind: 'net',
+    period: 'monthly',
+    loading: false,
     results: {}
   }
   salary = () => {
@@ -25,24 +26,24 @@ class Introduction extends Component {
     return salary
   }
   initialize = async () => {
-    // const data = {}
-    // const promise = await fetch(
-    //   `http://localhost:3000/initialize?data=${JSON.stringify(data)}`
-    // )
-    // const results = await promise.json()
-    // console.log('results', results)
+    this.setState({ loading: true })
+    const { contribution, zipcode } = this.state
+    const income = this.salary()
+    const promise = await fetch(
+      `http://localhost:3000/initialize`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ income, contribution, zipcode: zipcode.toString() })
+      }
+    )
+    const results = await promise.json()
+    console.log(results)
     this.setState(prevState => ({
       ...prevState,
       initialized: true,
-      results: {
-        ...prevState.results,
-        price_per_sqm: 10000,
-        purchase_surface: 100,
-        facts: {
-          ...prevState.results.facts,
-          price: 1000000
-        }
-      }
+      loading: false,
+      results
     }))
   }
   getResults = async () => {
@@ -104,15 +105,16 @@ class Introduction extends Component {
       period,
       onChangePeriod: this.handleSelect('period'),
       contribution,
-      onChangeContribution: this.handleChangeNumberField('contribution')
-      // disabled:
-      //   initialized ||
-      //   [income, contribution, zipcode, incomeKind, period].filter(Boolean)
-      //     .length < 5
+      onChangeContribution: this.handleChangeNumberField('contribution'),
+       disabled:
+         initialized ||
+         [income, contribution, zipcode, incomeKind, period].filter(Boolean)
+           .length < 5
     }
   }
 
   render() {
+    if(this.state.loading) return <B.Spinner overlay />
     return (
       <div>
         <B.Card>
@@ -122,24 +124,25 @@ class Introduction extends Component {
         </B.Card>
         <Sentence {...this.sentenceProps()} onSubmit={this.handleSubmit} />
 
-        <Divider>Résultats</Divider>
-        <S.Graph>
-          <Summary
-            type="rent"
-            initialCost={0}
-            recurrentCosts={0}
-            finalSavings={0}
-          />
-          <Graph />
-          <Summary
-            type="buy"
-            initialCost={0}
-            recurrentCosts={0}
-            finalSavings={0}
-          />
-        </S.Graph>
         {this.state.initialized && (
           <div>
+            <Divider>Résultats</Divider>
+            <S.Graph>
+              <Summary
+                type="rent"
+                initialCost={this.state.results.facts.costs[this.state.results.facts.equilibrium-1].rent.initial_costs}
+                recurrentCosts={this.state.results.facts.costs[this.state.results.facts.equilibrium-1].rent.recuring_costs}
+                finalSavings={-this.state.results.facts.costs[this.state.results.facts.equilibrium-1].rent.final_savings}
+              />
+              <Graph />
+              <Summary
+                type="buy"
+                initialCost={this.state.results.facts.costs[this.state.results.facts.equilibrium-1].purchase.initial_costs}
+                recurrentCosts={this.state.results.facts.costs[this.state.results.facts.equilibrium-1].purchase.recuring_costs}
+                finalSavings={-this.state.results.facts.costs[this.state.results.facts.equilibrium-1].purchase.final_savings}
+              />
+            </S.Graph>
+            <p> Il devient plus rentable d'acheter au bout de {this.state.results.facts.equilibrium} ans passés dans le bien</p>
             <Divider>Affiner</Divider>
             <div>
               <div>Bien à l’achat</div>

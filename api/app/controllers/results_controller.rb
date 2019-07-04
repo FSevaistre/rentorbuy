@@ -2,8 +2,6 @@ require "results"
 
 class ResultsController < ApplicationController
 
-  skip_before_action :verify_authenticity_token
-
   class InvalidParameters < StandardError
     def initialize(errors, message = nil)
       @message = message
