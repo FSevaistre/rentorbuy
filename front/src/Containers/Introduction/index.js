@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { omit } from 'lodash'
-import PropTypes from 'prop-types'
 import Summary from '../Summary'
 import Sentence from '../Sentence'
 import Graph from '../Graph'
@@ -31,7 +30,7 @@ class Introduction extends Component {
     this.setState({ loading: true })
     const { contribution, zipcode } = this.state
     const income = this.salary()
-    const promise = await fetch(`http://10.10.0.95:3000/initialize`, {
+    const promise = await fetch('http://10.10.0.95:3000/initialize', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -41,7 +40,6 @@ class Introduction extends Component {
       })
     })
     const results = await promise.json()
-    console.log(results)
     this.setState(prevState => ({
       ...prevState,
       initialized: true,
@@ -50,7 +48,7 @@ class Introduction extends Component {
     }))
   }
   getResults = async () => {
-    const promise = await fetch(`http://10.10.0.95:3000/sharpen`, {
+    const promise = await fetch('http://10.10.0.95:3000/sharpen', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(omit(this.state.results, ['facts']))
@@ -173,61 +171,198 @@ class Introduction extends Component {
               </S.Graph>
               <S.Equilibrium>
                 Il devient plus rentable d’acheter au bout de{' '}
-                {this.state.results.facts.equilibrium} ans passés dans le bien.
+                <strong>{this.state.results.facts.equilibrium}</strong> ans
+                passés dans le bien.
               </S.Equilibrium>
-              <Input
-                value={this.state.results.home_price_growth_rate || ''}
-                type="decimal"
-                onChange={this.handleChangeInput('home_price_growth_rate')}
-                label="Taux d'augmentation de l'immobilier"
-                placeholder="1"
-              />
             </B.Wrapper>
             <Divider>Affiner</Divider>
             <B.Wrapper>
-              <div>
-                <div>Bien à l’achat</div>
-                <Input
-                  value={this.state.results.price_per_sqm || ''}
-                  onChange={this.handleChangeInput('price_per_sqm')}
-                  label="Prix au m2"
-                  placeholder="10 000"
-                />
-                <Input
-                  value={this.state.results.purchase_surface || ''}
-                  onChange={this.handleChangeInput('purchase_surface')}
-                  label="Surface"
-                  placeholder="100"
-                />
-                <Input value={this.state.results.facts.price} label="" />
-                <div>Bien à la location</div>
-                <Input
-                  value={this.state.results.facts.rent || ''}
-                  label="Loyer"
-                />
-                <Input
-                  value={this.state.results.rented_surface || ''}
-                  onChange={this.handleChangeInput('rented_surface')}
-                  label="Surface"
-                  placeholder="100"
-                />
-                <Input
-                  value={this.state.results.rent_per_sqm}
-                  onChange={this.handleChangeInput('rent_per_sqm')}
-                  label="Loyer au m²"
-                  placeholder="300 000"
-                />
-              </div>
-              <div>
-                <div>Épargne</div>
-                <div>Financement</div>
-              </div>
-              <div>
-                <div>Frais de location</div>
-                <div>Frais de propriétaire</div>
-              </div>
-              <div>Indices financiers</div>
-              <B.Button onClick={this.handleSharpen}>Valider</B.Button>
+              <S.Sections>
+                <S.Section>
+                  <B.SubHeading>Bien à la location</B.SubHeading>
+                  <S.Divider>
+                    <B.Divider />
+                  </S.Divider>
+                  <Input
+                    value={this.state.results.rent_per_sqm}
+                    onChange={this.handleChangeInput('rent_per_sqm')}
+                    label="Loyer au m²"
+                    placeholder="300 000"
+                    suffix="€"
+                  />
+                  <Input
+                    value={this.state.results.rented_surface || ''}
+                    onChange={this.handleChangeInput('rented_surface')}
+                    label="Surface"
+                    placeholder="100"
+                    suffix="m²"
+                  />
+                  <Input
+                    value={this.state.results.facts.rent || ''}
+                    label="Loyer"
+                    suffix="€"
+                  />
+                </S.Section>
+                <S.Section>
+                  <B.SubHeading>Bien à l’achat</B.SubHeading>
+                  <S.Divider>
+                    <B.Divider />
+                  </S.Divider>
+                  <Input
+                    value={this.state.results.price_per_sqm || ''}
+                    onChange={this.handleChangeInput('price_per_sqm')}
+                    label="Prix au m²"
+                    placeholder="10 000"
+                    suffix="€"
+                  />
+                  <Input
+                    value={this.state.results.purchase_surface || ''}
+                    onChange={this.handleChangeInput('purchase_surface')}
+                    label="Surface"
+                    placeholder="100"
+                    suffix="m²"
+                  />
+                  <Input
+                    value={this.state.results.facts.price}
+                    label="Prix du bien"
+                    suffix="€"
+                  />
+                </S.Section>
+
+                <S.Section>
+                  <B.SubHeading>Épargne</B.SubHeading>
+                  <S.Divider>
+                    <B.Divider />
+                  </S.Divider>
+                  <Input
+                    value={this.state.results.monthly_savings}
+                    onChange={this.handleChangeInput('monthly_savings')}
+                    label="Épargne mensuelle"
+                    placeholder="500"
+                    suffix="€"
+                  />
+                  <Input
+                    value={this.state.results.contribution}
+                    label="Apport"
+                    suffix="€"
+                  />
+                </S.Section>
+                <S.Section>
+                  <B.SubHeading>Financement</B.SubHeading>
+                  <S.Divider>
+                    <B.Divider />
+                  </S.Divider>
+                  <Input
+                    value={this.state.results.mortgage_rate || ''}
+                    onChange={this.handleChangeInput('mortgage_rate')}
+                    label="Taux"
+                    placeholder="1.5"
+                    suffix="%"
+                    type="decimal"
+                  />
+                  <Input
+                    value={this.state.results.mortgage_duration || ''}
+                    onChange={this.handleChangeInput('mortgage_duration')}
+                    label="Durée"
+                    placeholder="25"
+                    suffix="ans"
+                  />
+                  <Input
+                    value={this.state.results.facts.payment}
+                    label="Mensualité"
+                    suffix="€"
+                  />
+                </S.Section>
+
+                <S.Section>
+                  <B.SubHeading>Frais de locataire</B.SubHeading>
+                  <S.Divider>
+                    <B.Divider />
+                  </S.Divider>
+                  <Input
+                    value={this.state.results.housing_tax}
+                    onChange={this.handleChangeInput('housing_tax')}
+                    label="Taxe d'habitation"
+                    placeholder="1 000"
+                    suffix="€"
+                  />
+                  <Input
+                    value={this.state.results.agency_fees}
+                    onChange={this.handleChangeInput('agency_fees')}
+                    label="Frais d'agence"
+                    placeholder="1 000"
+                    suffix="€"
+                  />
+                </S.Section>
+                <S.Section>
+                  <B.SubHeading>Frais de propriétaire</B.SubHeading>
+                  <S.Divider>
+                    <B.Divider />
+                  </S.Divider>
+                  <Input
+                    value={this.state.results.mortgage_rate || ''}
+                    onChange={this.handleChangeInput('mortgage_rate')}
+                    label="Taux"
+                    placeholder="1.5"
+                    suffix="%"
+                    type="decimal"
+                  />
+                  <Input
+                    value={this.state.results.mortgage_duration || ''}
+                    onChange={this.handleChangeInput('mortgage_duration')}
+                    label="Durée"
+                    placeholder="25"
+                    suffix="ans"
+                  />
+                  <Input
+                    value={this.state.results.facts.payment}
+                    label="Mensualité"
+                    suffix="€"
+                  />
+                </S.Section>
+
+                <S.Section>
+                  <B.SubHeading>Indices financiers</B.SubHeading>
+                  <S.Divider>
+                    <B.Divider />
+                  </S.Divider>
+                  <Input
+                    value={this.state.results.rent_growth_rate}
+                    onChange={this.handleChangeInput('rent_growth_rate')}
+                    label="Évolution du loyer"
+                    placeholder="1.5"
+                    suffix="%"
+                    type="decimal"
+                  />
+                  <Input
+                    value={this.state.results.home_price_growth_rate}
+                    onChange={this.handleChangeInput('home_price_growth_rate')}
+                    label="Évolution de l'immobilier"
+                    placeholder="3"
+                    suffix="%"
+                    type="decimal"
+                  />
+                  <Input
+                    value={this.state.results.savings_return_rate}
+                    onChange={this.handleChangeInput('savings_return_rate')}
+                    label="Rémunération de l'épargne"
+                    placeholder="3"
+                    suffix="%"
+                    type="decimal"
+                  />
+                  <Input
+                    value={this.state.results.inflation_rate}
+                    onChange={this.handleChangeInput('inflation_rate')}
+                    label="Inflation"
+                    placeholder="3"
+                    suffix="%"
+                    type="decimal"
+                  />
+                </S.Section>
+              </S.Sections>
+              <S.Button>
+                <B.Button onClick={this.handleSharpen}>Valider</B.Button>
+              </S.Button>
             </B.Wrapper>
           </div>
         )}

@@ -1,19 +1,31 @@
-import React, { memo } from 'react'
+import React, { memo, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import * as B from '../../bricks'
 import * as S from './styles'
-const Input = ({ label, ...props }) => (
+const Input = ({ label, suffix, ...props }) => (
   <S.Input>
-    {label}
-    {props.onChange ? <B.NumberField {...props} /> : <div>{props.value}</div>}
+    <B.Row
+      label={label}
+      value={
+        props.onChange ? (
+          <S.Field>
+            <B.NumberField {...props} /> {suffix}
+          </S.Field>
+        ) : (
+          <B.SubHeading>
+            {props.value.toLocaleString('fr')} {suffix}
+          </B.SubHeading>
+        )
+      }
+    />
   </S.Input>
 )
 
 Input.propTypes = {
-  type: PropTypes.oneOf(['rent', 'buy']).isRequired,
-  initialCost: PropTypes.number.isRequired,
-  recurrentCosts: PropTypes.number.isRequired,
-  finalSavings: PropTypes.number.isRequired
+  label: PropTypes.string,
+  suffix: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.any
 }
 
-export default Input
+export default memo(Input)
