@@ -300,23 +300,24 @@ class Introduction extends Component {
                     <B.Divider />
                   </S.Divider>
                   <Input
-                    value={this.state.results.mortgage_rate || ''}
-                    onChange={this.handleChangeInput('mortgage_rate')}
-                    label="Taux"
-                    placeholder="1.5"
-                    suffix="%"
-                    type="decimal"
+                    value={this.state.results.land_tax || ''}
+                    onChange={this.handleChangeInput('land_tax')}
+                    label="Taxe foncière"
+                    placeholder="1 000"
+                    suffix="€"
                   />
                   <Input
-                    value={this.state.results.mortgage_duration || ''}
-                    onChange={this.handleChangeInput('mortgage_duration')}
-                    label="Durée"
-                    placeholder="25"
-                    suffix="ans"
+                    value={this.state.results.notary_fees || ''}
+                    onChange={this.handleChangeInput('notary_fees')}
+                    label="Frais de notaire"
+                    placeholder="10 000"
+                    suffix="€"
                   />
                   <Input
-                    value={this.state.results.facts.payment}
-                    label="Mensualité"
+                    value={this.state.results.property_charges || ''}
+                    onChange={this.handleChangeInput('property_charges')}
+                    label="Charges de copropriété"
+                    placeholder="10 000"
                     suffix="€"
                   />
                 </S.Section>
