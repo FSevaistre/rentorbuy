@@ -8,6 +8,7 @@ import Divider from '../Divider'
 import Input from '../Input'
 import * as B from '../../bricks'
 import * as S from './styles'
+
 class Introduction extends Component {
   state = {
     initialized: false,
@@ -30,14 +31,15 @@ class Introduction extends Component {
     this.setState({ loading: true })
     const { contribution, zipcode } = this.state
     const income = this.salary()
-    const promise = await fetch(
-      `http://10.10.0.95:3000/initialize`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ income, contribution, zipcode: zipcode.toString() })
-      }
-    )
+    const promise = await fetch(`http://10.10.0.95:3000/initialize`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        income,
+        contribution,
+        zipcode: zipcode.toString()
+      })
+    })
     const results = await promise.json()
     console.log(results)
     this.setState(prevState => ({
@@ -48,14 +50,11 @@ class Introduction extends Component {
     }))
   }
   getResults = async () => {
-    const promise = await fetch(
-      `http://10.10.0.95:3000/sharpen`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(omit(this.state.results, ["facts"]))
-      }
-    )
+    const promise = await fetch(`http://10.10.0.95:3000/sharpen`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(omit(this.state.results, ['facts']))
+    })
     const results = await promise.json()
     this.setState(prevState => ({
       ...prevState,
@@ -81,12 +80,10 @@ class Introduction extends Component {
     this.getResults()
   }
 
-  handleChangeInput = key => (value) =>
+  handleChangeInput = key => value =>
     this.setState(prevState => ({
       ...prevState,
-      results: { ...prevState.results,
-        [key]: value
-      }
+      results: { ...prevState.results, [key]: value }
     }))
 
   sentenceProps = () => {
@@ -109,97 +106,129 @@ class Introduction extends Component {
       onChangePeriod: this.handleSelect('period'),
       contribution,
       onChangeContribution: this.handleChangeNumberField('contribution'),
-       disabled:
-         initialized ||
-         [income, contribution, zipcode, incomeKind, period].filter(Boolean)
-           .length < 5
+      disabled:
+        initialized ||
+        [income, contribution, zipcode, incomeKind, period].filter(Boolean)
+          .length < 5
     }
   }
 
   render() {
-    if(this.state.loading) return <B.Spinner overlay />
+    if (this.state.loading) return <B.Spinner overlay />
     return (
       <div>
         <B.Card>
           <B.Content>
-            <B.Heading>Simulateur acheter ou louer</B.Heading>
+            <B.Wrapper>
+              <B.Heading>Simulateur acheter ou louer</B.Heading>
+            </B.Wrapper>
           </B.Content>
         </B.Card>
-        <Sentence {...this.sentenceProps()} onSubmit={this.handleSubmit} />
+        <B.Wrapper>
+          <Sentence {...this.sentenceProps()} onSubmit={this.handleSubmit} />
+        </B.Wrapper>
 
         {this.state.initialized && (
           <div>
             <Divider>Résultats</Divider>
-            <S.Graph>
-              <Summary
-                type="rent"
-                initialCost={this.state.results.facts.costs[this.state.results.facts.equilibrium-1].rent.initial_costs}
-                recurrentCosts={this.state.results.facts.costs[this.state.results.facts.equilibrium-1].rent.recuring_costs}
-                finalSavings={-this.state.results.facts.costs[this.state.results.facts.equilibrium-1].rent.final_savings}
-              />
-              <Graph />
-              <Summary
-                type="buy"
-                initialCost={this.state.results.facts.costs[this.state.results.facts.equilibrium-1].purchase.initial_costs}
-                recurrentCosts={this.state.results.facts.costs[this.state.results.facts.equilibrium-1].purchase.recuring_costs}
-                finalSavings={-this.state.results.facts.costs[this.state.results.facts.equilibrium-1].purchase.final_savings}
-              />
-            </S.Graph>
-            <p> Il devient plus rentable d'acheter au bout de {this.state.results.facts.equilibrium} ans passés dans le bien</p>
+            <B.Wrapper>
+              <S.Graph>
+                <Summary
+                  type="rent"
+                  initialCost={
+                    this.state.results.facts.costs[
+                      this.state.results.facts.equilibrium - 1
+                    ].rent.initial_costs
+                  }
+                  recurrentCosts={
+                    this.state.results.facts.costs[
+                      this.state.results.facts.equilibrium - 1
+                    ].rent.recuring_costs
+                  }
+                  finalSavings={
+                    -this.state.results.facts.costs[
+                      this.state.results.facts.equilibrium - 1
+                    ].rent.final_savings
+                  }
+                />
+                <Graph costs={this.state.results.facts.costs} />
+                <Summary
+                  type="buy"
+                  initialCost={
+                    this.state.results.facts.costs[
+                      this.state.results.facts.equilibrium - 1
+                    ].purchase.initial_costs
+                  }
+                  recurrentCosts={
+                    this.state.results.facts.costs[
+                      this.state.results.facts.equilibrium - 1
+                    ].purchase.recuring_costs
+                  }
+                  finalSavings={
+                    -this.state.results.facts.costs[
+                      this.state.results.facts.equilibrium - 1
+                    ].purchase.final_savings
+                  }
+                />
+              </S.Graph>
+              <S.Equilibrium>
+                Il devient plus rentable d’acheter au bout de{' '}
+                {this.state.results.facts.equilibrium} ans passés dans le bien.
+              </S.Equilibrium>
               <Input
                 value={this.state.results.home_price_growth_rate || ''}
-                type='decimal'
+                type="decimal"
                 onChange={this.handleChangeInput('home_price_growth_rate')}
                 label="Taux d'augmentation de l'immobilier"
                 placeholder="1"
               />
+            </B.Wrapper>
             <Divider>Affiner</Divider>
-            <div>
-              <div>Bien à l’achat</div>
-              <Input
-                value={this.state.results.price_per_sqm || ''}
-                onChange={this.handleChangeInput('price_per_sqm')}
-                label="Prix au m2"
-                placeholder="10 000"
-              />
-              <Input
-                value={this.state.results.purchase_surface || ''}
-                onChange={this.handleChangeInput('purchase_surface')}
-                label="Surface"
-                placeholder="100"
-              />
-              <Input
-                value={this.state.results.facts.price}
-                label=""
-              />
-              <div>Bien à la location</div>
-              <Input
-                value={this.state.results.facts.rent || ''}
-                label="Loyer"
-              />
-              <Input
-                value={this.state.results.rented_surface || ''}
-                onChange={this.handleChangeInput('rented_surface')}
-                label="Surface"
-                placeholder="100"
-              />
-              <Input
-                value={this.state.results.rent_per_sqm}
-                onChange={this.handleChangeInput('rent_per_sqm')}
-                label="Loyer au m²"
-                placeholder="300 000"
-              />
-            </div>
-            <div>
-              <div>Épargne</div>
-              <div>Financement</div>
-            </div>
-            <div>
-              <div>Frais de location</div>
-              <div>Frais de propriétaire</div>
-            </div>
-            <div>Indices financiers</div>
-            <B.Button onClick={this.handleSharpen}>Valider</B.Button>
+            <B.Wrapper>
+              <div>
+                <div>Bien à l’achat</div>
+                <Input
+                  value={this.state.results.price_per_sqm || ''}
+                  onChange={this.handleChangeInput('price_per_sqm')}
+                  label="Prix au m2"
+                  placeholder="10 000"
+                />
+                <Input
+                  value={this.state.results.purchase_surface || ''}
+                  onChange={this.handleChangeInput('purchase_surface')}
+                  label="Surface"
+                  placeholder="100"
+                />
+                <Input value={this.state.results.facts.price} label="" />
+                <div>Bien à la location</div>
+                <Input
+                  value={this.state.results.facts.rent || ''}
+                  label="Loyer"
+                />
+                <Input
+                  value={this.state.results.rented_surface || ''}
+                  onChange={this.handleChangeInput('rented_surface')}
+                  label="Surface"
+                  placeholder="100"
+                />
+                <Input
+                  value={this.state.results.rent_per_sqm}
+                  onChange={this.handleChangeInput('rent_per_sqm')}
+                  label="Loyer au m²"
+                  placeholder="300 000"
+                />
+              </div>
+              <div>
+                <div>Épargne</div>
+                <div>Financement</div>
+              </div>
+              <div>
+                <div>Frais de location</div>
+                <div>Frais de propriétaire</div>
+              </div>
+              <div>Indices financiers</div>
+              <B.Button onClick={this.handleSharpen}>Valider</B.Button>
+            </B.Wrapper>
           </div>
         )}
       </div>
