@@ -4,7 +4,7 @@ import { g, colors } from '../../bricks/core'
 export const Graph = styled.div`
   width: ${g(50)};
   color: ${colors.neutral1};
-  background: ${colors.neutral1.fade(10)};
+  background: ${colors.neutral1.fade(1)};
   margin: 0 ${g(2)};
   border-radius: 8px;
   display: flex;
