@@ -6,10 +6,23 @@ const Summary = ({ type, initialCost, recurrentCosts, finalSavings }) => (
   <B.Card variant={type === 'rent' ? 'accent-1' : 'primary-1'}>
     <B.Content>
       <B.Heading>{type === 'rent' ? 'Louer' : 'Acheter'}</B.Heading>
-      <div>Cout inital : {initialCost}</div>
-      <div>couts récurrents : {recurrentCosts}</div>
-      <div>Plus value : {finalSavings}</div>
-      <div>Total : {initialCost + recurrentCosts - finalSavings}</div>
+      <div>
+        Cout inital : <strong>{initialCost.toLocaleString('fr')}</strong> €
+      </div>
+      <div>
+        couts récurrents :{' '}
+        <strong>{recurrentCosts.toLocaleString('fr')}</strong> €
+      </div>
+      <div>
+        Plus value : <strong>{finalSavings.toLocaleString('fr')}</strong> €
+      </div>
+      <div>
+        Total :{' '}
+        <strong>
+          {(initialCost + recurrentCosts - finalSavings).toLocaleString('fr')}
+        </strong>{' '}
+        €
+      </div>
     </B.Content>
   </B.Card>
 )
@@ -20,4 +33,4 @@ Summary.propTypes = {
   finalSavings: PropTypes.number.isRequired
 }
 
-export default Summary
+export default memo(Summary)
